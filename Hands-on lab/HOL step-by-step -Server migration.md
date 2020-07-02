@@ -1,4 +1,4 @@
-![Microsoft Cloud Workshop](../images/ms-cloud-workshop.png)
+![Microsoft Cloud Workshop](images/ms-cloud-workshop.png)
 
 Server migration  
 Hands-on lab  
