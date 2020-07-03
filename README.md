@@ -8,6 +8,7 @@
 - Application Gateway
 - Application Insights
 - Azure Active Directory
+- Azure Bastion
 - Azure DNS
 - Azure Key Vault
 - Azure Monitor
