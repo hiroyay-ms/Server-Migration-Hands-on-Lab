@@ -25,10 +25,16 @@ July 2020
 ## **概要**
 Contoso, Ltd. (Contoso) は古くから存在する業界に新規参入した企業です。ニュージーランドのオークランドで 2011 年に設立された Contoso は、十分な保険に入っていない個人を対象としたニッチな市場で広範な長期保険サービスを提供しています。当初の予想よりも早いペースで成長を続けた Contoso では、その成長のスピードに対応することが困難になりつつありました。創業直後の 1 年間だけでも、同社のサービスに対する需要に応えるために 100 人以上の従業員を新規に雇用しました。Contoso は、保険契約と関連ドキュメントを管理するためにカスタム開発された PolicyConnect という ASP.NET で開発された Web アプリケーションを使用しています。PolicyConnect はオンプレミスの SQL Server 2008 R2 データベースをデータストアとして使用し、契約ドキュメントの格納には LAN 上のファイル サーバーが使用されています。契約の管理を目的としたこのアプリケーションとプロセスに対する負荷は限界に近づいています。  
 Contoso のアプリケーションをクラウドでホストするための準備の一環として、同社では、既存の SQL Server データベースを Azure 内の PaaS サービスに移行することが計画されています。Contoso は、Azure の完全なマネージド SQL サービスで提供される高度なセキュリティ機能を活用したいと考えています。アプリケーションも運用負荷の軽減や柔軟なスケール等のメリットを享受するため Azure PaaS サービスへの移行を検討していますが、当初はプライベート接続に限定したいと考えています。最終的にアプリケーションは、外部からアクセス可能な状態にする予定ですが、その際に既存の Active Directory のユーザーでアクセスできる必要があります。  
-クラウドに移行することにより、社内の技術的能力が向上し、クラウドの強化機能やサービスを活用できるようになることが期待されています。
+クラウドへの移行により、社内の技術的能力が向上し、クラウドの強化機能やサービスを活用できるようになることが期待されています。
 
 ## **ソリューション アーキテクチャ**
+
 ## **事前準備**
+- **Web アプリケーションの確認**
+- **データベースの確認**
+- **クライアントの確認**
+- **リソース グループの作成**
+<br />
 
 # **Exercise 1: オンプレミス データベースの移行**
 この実習では、SQL Server データベースを Azure SQL Database へ移行するための方法を検討し、移行を実施します。Microsoft Data Migration Assistant (DMA) を使用することで、SQL Server データベースと Azure SQL Database 間の機能等価性および互換性の問題の詳細を示すレポートが生成できます。DMA では、評価だけでなく、スキーマ、データ、およびオブジェクトをソース サーバーからターゲット サーバーへの移行を行うことができますが、実際の移行方法に関しては、各グループで選択することができます。
@@ -39,6 +45,8 @@ Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデー
 ## **Task 2**: Azure SQL Database へのデータ移行
 移行先となる Azure SQL Database を作成  
 オンプレミス データベースから Azure SQL Database へデータを移行 
+
+<br />
 
 ### **参考情報**
 - **SQL Server データベースを Azure に移行する**  
@@ -59,6 +67,8 @@ Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデー
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal>
 - **Azure SQL Database と Azure Synapse の IP ファイアウォール規則**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/firewall-configure>
+
+<br />
 
 # **Exercise 2: データベース移行後のセキュリティ強化**
 この実習では、Azure SQL Database のいくつかのセキュリティ機能を確認し、Azure SQL Database を利用する際のセキュリティの利点をレビューします。SQL Database 向け Advanced Data Security (ADS) は、機密データの検出と分類、潜在的なデータベースの脆弱性の検出と緩和、およびデータベースに対する脅威を示す可能性のある異常なアクティビティの検出に関する機能を始めとする高度なセキュリティ機能を提供します。
@@ -86,6 +96,8 @@ SELECT * FROM [dbo].[テーブル名];
 REVERT;
 ```
 
+<br />
+
 ### **参考情報**
 - **Advanced Data Security**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/advanced-data-security>
@@ -98,6 +110,8 @@ REVERT;
 - **データベース ユーザーの作成**
 <https://docs.microsoft.com/ja-jp/sql/relational-databases/security/authentication-access/create-a-database-user?view=sql-server-ver15>
 
+<br />
+
 # **Exercise 3: Web アプリケーションの移行**
 この演習では、ASP.NET で開発されたアプリケーションの Azure への移行を実施します。移行前に App Service Migration Assistant を使用してアプリが移行に適しているかどうかを評価できます。
 
@@ -106,6 +120,8 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 ## **Task 2**: Web Apps へのアプリケーションの移行
 移行先となる Web Apps の作成  
 アプリケーションの移行
+
+<br />
 
 ### **参考情報**
 - **.NET Web アプリまたはサービスを Azure App Service に移行する**  
@@ -127,6 +143,8 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 - **Azure App Service のデプロイ資格情報の構成**  
 <https://docs.microsoft.com/ja-jp/azure/app-service/deploy-configure-credentials>
 
+<br />
+
 # **Exercise 4: 移行後のアプリケーションの設定**
 セキュリティ強化の一環として、アプリケーション構成ファイルでデータベースの接続文字列がプレーン テキストとして表示されないようにシークレットはセキュアな方法で格納します。  
 また、需要の変化に合わせてインスタンス数が増減するようにアプリケーションの設定を行います。
@@ -140,6 +158,8 @@ Key Vault を作成し、データベースへの接続文字列をキー コン
 データベースの接続文字列を Key Vault シークレットの URI を参照するように指定
 ## **Task 3**: 自動スケールの設定
 CPU 負荷が閾値を超えた場合にアプリケーションがスケール アウトするよう構成
+
+<br />
 
 ### **参考情報**
 - **Azure Key Vault の基本的な概念**  
@@ -155,6 +175,8 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 - **Azure での自動スケールの使用**  
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/autoscale-get-started>
 
+<br />
+
 # **Exercise 5: ストレージへの PDF ファイルのアップロード**
 アプリケーションから参照する PDF ファイルは、ローカル ネットワーク内に格納されています。PDF ファイルも移行したアプリケーションから参照できるようクラウド上へアップロードする必要があります。この演習では、ファイルを格納するストレージ アカウントの準備と、既存 PDF ファイルのアップロードを行います。
 
@@ -165,6 +187,8 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 ## **Task 3**: アプリケーション設定の変更
 アプリケーションからファイルが参照できるように構成ファイルのパスを変更
 
+<br />
+
 ### **参考情報**
 - **Azure Storage アカウントの作成**  
 <https://docs.microsoft.com/ja-jp/azure/storage/common/storage-account-create?tabs=azure-portal>
@@ -174,6 +198,8 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 <https://docs.microsoft.com/ja-jp/azure/storage/common/storage-use-azcopy-v10>
 - **AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する**  
 <https://docs.microsoft.com/ja-jp/azure/storage/common/storage-use-azcopy-migrate-on-premises-data?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows>
+
+<br />
 
 # **Exercise 6: Azure PaaS サービスへのプライベート接続の実装**
 アプリケーションの移行先には Azure PaaS サービス（Web Apps, Azure Storage, SQL Database など）を使用しているため、そのままの状態ではインターネットに公開されています。この演習では、Azure PaaS サービスをパブリック インターネットからのアクセスから保護するため、仮想ネットワーク内のプライベート エンドポイント経由でのみアクセスを許可するように変更します。
@@ -194,11 +220,15 @@ DNS レコードの登録
     - インターネットから
 
 
+<br />
+
 ### **参考情報**
 - **Azure Private Link とは**  
 <https://docs.microsoft.com/ja-jp/azure/private-link/private-link-overview>
 - **Azure Portal を使用してプライベート エンドポイントを作成する**  
 <https://docs.microsoft.com/ja-jp/azure/private-link/create-private-endpoint-portal>
+- **Azure 仮想ネットワーク内のリソースの名前解決**  
+<https://docs.microsoft.com/ja-jp/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances>
 - **Azure プライベート エンドポイントの DNS 構成**  
 <https://docs.microsoft.com/ja-jp/azure/private-link/private-endpoint-dns>
 - **Azure プライベート DNS とは**  
@@ -216,6 +246,8 @@ DNS レコードの登録
 - **仮想ネットワーク ピアリングで仮想ネットワークを接続する**  
 <https://docs.microsoft.com/ja-jp/azure/virtual-network/tutorial-connect-virtual-networks-portal>
 
+<br />
+
 # **Exercise 7: Web アプリケーションの監視設定**
 この演習では、Application Insights を Web Apps に追加し、アプリケーションに対するリクエストのインサイトを収集します。
 演習中に負荷テスト ツールを使用し、動的にスケーリングが開始され、サーバーの割り当て数が増加することも確認します。
@@ -228,7 +260,7 @@ Live Metrics Stream を使用したリアルタイム監視の開始
 k6 のインストール（<https://k6.io/docs/getting-started/installation>）  
 JavaScript ファイルの作成
 
-```Javascript:script.js
+```Javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
@@ -246,6 +278,8 @@ k6 run --vus 100 --duration 300s script.js
 - **duration**: テストを実行する時間
 - **script.js**: 生成した JavaScript ファイルを指定
 
+<br />
+
 ### **参考情報**
 - **Application Insights とは何か**  
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/app/app-insights-overview>
@@ -257,5 +291,7 @@ k6 run --vus 100 --duration 300s script.js
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/app/live-stream>
 - **k6 の基本的な使用方法**  
 <https://k6.io/docs/getting-started/running-k6>
+
+<br />
 
 # **Exercise 8: Web アプリケーションへの認証追加と外部公開**
