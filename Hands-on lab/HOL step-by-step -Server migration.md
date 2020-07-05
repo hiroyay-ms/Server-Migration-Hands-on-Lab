@@ -42,9 +42,8 @@ Contoso のアプリケーションをクラウドでホストするための準
 ## **Task 1**: Azure SQL Database への移行評価の実行
 Azure SQL Database にデータを移行する際に対処する必要のある潜在的な問題を識別するためのレポートの作成  
 Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデータベースの評価を実行
-## **Task 2**: Azure SQL Database へのデータ移行
-移行先となる Azure SQL Database を作成  
-オンプレミス データベースから Azure SQL Database へデータを移行 
+## **Task 2**: Azure SQL Database へのデータ移行  
+オンプレミス データベースから Azure SQL Database へ移行 
 
 <br />
 
