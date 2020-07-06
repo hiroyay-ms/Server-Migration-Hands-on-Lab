@@ -207,8 +207,6 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 プライベート エンドポイント経由で Azure PaaS サービスへアクセスできるように構成
   - Web Apps 
   - SQL Database
-  - Azure Storage
-  - Key Vault 
 ## **Task 2**: プライベート DNS ゾーンの構成
 プライベート DNS ゾーンの作成  
 DNS レコードの登録  
@@ -217,7 +215,9 @@ DNS レコードの登録
 アプリケーションへのアクセス確認  
     - プライベート ネットワークから  
     - インターネットから
-
+## **Appendix**（時間があれば、以下の PaaS サービスのプライベート エンドポイントも構成）
+  - Azure Storage
+  - Key Vault
 
 <br />
 
