@@ -264,14 +264,17 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export default function() {
-  let res = http.get('https://httpbin.org/');
-  check(res, { 'status was 200': r => r.status == 200 });
+  http.get('http://test.k6.io');
   sleep(1);
 }
 ```
+※ http://test.k6.io を展開した Web Apps の URL に変更
+
+<br />
+
 負荷テストの実行
 ```
-k6 run --vus 100 --duration 300s script.js
+k6 run --vus 500 --duration 300s script.js
 ```
 - **vus**: 仮想ユーザー数（並列実行数）
 - **duration**: テストを実行する時間
@@ -294,3 +297,26 @@ k6 run --vus 100 --duration 300s script.js
 <br />
 
 # **Exercise 8: Web アプリケーションへの認証追加と外部公開**
+
+## **Task 1**: 
+## **Task 2**: 
+
+### **参考情報**
+- **Application Gateway とは**  
+<https://docs.microsoft.com/ja-jp/azure/application-gateway/overview>
+- **自動スケーリングとゾーン冗長 Application Gateway v2**  
+<https://docs.microsoft.com/ja-jp/azure/application-gateway/application-gateway-autoscaling-zone-redundant>
+- **Application Gateway による Web トラフィックのルーティング**  
+<https://docs.microsoft.com/ja-jp/azure/application-gateway/quick-create-portal>
+- **Application Gateway 上の Web Application Firewall**  
+<https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/ag-overview>
+- **Web Application Firewall のある Application Gateway を作成する**  
+<https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/application-gateway-web-application-firewall-portal>
+- **VPN ゲートウェイとは**  
+<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-about-vpngateways>
+- **ポイント対サイト VPN Gateway 用に OpenVPN を構成する**  
+<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-howto-openvpn>
+- **VPN Gateway 用に OpenVPN クライアントを構成する**  
+<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients>
+- **P2S OpenVPN プロトコル用に VPN クライアントを構成する**  
+<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/openvpn-azure-ad-client>
