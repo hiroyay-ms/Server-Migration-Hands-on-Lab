@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subnetName": {
@@ -8,65 +8,11 @@
         "virtualNetworkId": {
             "type": "string"
         },
-        "dataDisks": {
-            "type": "array"
-        },
         "adminUsername": {
             "type": "string"
         },
         "adminPassword": {
-            "type": "secureString"
-        },
-        "sqlStorageDisksCount": {
-            "type": "int"
-        },
-        "sqlStorageWorkloadType": {
-            "type": "string"
-        },
-        "sqlStorageDisksConfigurationType": {
-            "type": "string"
-        },
-        "sqlStorageStartingDeviceId": {
-            "type": "int"
-        },
-        "sqlStorageDeploymentToken": {
-            "type": "int"
-        },
-        "sqlAutopatchingDayOfWeek": {
-            "type": "string"
-        },
-        "sqlAutopatchingStartHour": {
-            "type": "string"
-        },
-        "sqlAutopatchingWindowDuration": {
-            "type": "string"
-        },
-        "sqlAuthenticationLogin": {
-            "type": "string"
-        },
-        "sqlAuthenticationPassword": {
             "type": "securestring"
-        },
-        "dataPath": {
-            "type": "string"
-        },
-        "dataDisksLUNs": {
-            "type": "array"
-        },
-        "logPath": {
-            "type": "string"
-        },
-        "logDisksLUNs": {
-            "type": "array"
-        },
-        "tempDbPath": {
-            "type": "string"
-        },
-        "tempDisksLUNs": {
-            "type": "array"
-        },
-        "rServicesEnabled": {
-            "type": "string"
         }
     },
     "variables": {
@@ -110,7 +56,7 @@
         {
             "name": "[variables('sqlVirtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2019-07-01",
+            "apiVersion": "2019-03-01",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('sqlNetworkInterface'))]"
@@ -121,9 +67,9 @@
                 },
                 "storageProfile": {
                     "osDisk": {
-                        "createOption": "fromImage",
+                        "createOption": "FromImage",
                         "managedDisk": {
-                            "storageAccountType": "[variables('sql-osDiskType')]"
+                            "storageAccountType": "StandardSSD_LRS"
                         }
                     },
                     "imageReference": {
@@ -141,50 +87,29 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[variables('virtualMachineComputerName')]",
+                    "computerName": "[variables('sqlVirtualMachineName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
                         "enableAutomaticUpdates": true,
-                        "provisionVmAgent": true
+                        "provisionVMAgent": true
                     }
                 }
             }
         },
         {
-            "name": "[variables('sqlVirtualMachineComputerName')]",
-            "type": "Microsoft.SqlVirtualMachine/SqlVirtualMachines",
+            "type": "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
             "apiVersion": "2017-03-01-preview",
+            "name": "[variables('sqlVirtualMachineName')]",
             "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
+            ],
             "properties": {
                 "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
                 "sqlManagement": "Full",
-                "SqlServerLicenseType": "PAYG",
-                "AutoPatchingSettings": {
-                    "Enable": true,
-                    "DayOfWeek": "[parameters('sqlAutopatchingDayOfWeek')]",
-                    "MaintenanceWindowStartingHour": "[parameters('sqlAutopatchingStartHour')]",
-                    "MaintenanceWindowDuration": "[parameters('sqlAutopatchingWindowDuration')]"
-                },
-                "KeyVaultCredentialSettings": {
-                    "Enable": false,
-                    "CredentialName": ""
-                },
-                "ServerConfigurationsManagementSettings": {
-                    "SQLConnectivityUpdateSettings": {
-                        "ConnectivityType": "[variables('sqlConnectivityType')]",
-                        "Port": "[variables('sqlPortNumber')]",
-                        "SQLAuthUpdateUserName": "[parameters('sqlAuthenticationLogin')]",
-                        "SQLAuthUpdatePassword": "[parameters('sqlAuthenticationPassword')]"
-                    },
-                    "AdditionalFeaturesServerConfigurations": {
-                        "IsRServicesEnabled": "[parameters('rServicesEnabled')]"
-                    }
-                }
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
-            ]
+                "sqlServerLicenseType": "PAYG"
+            }
         }
     ],
     "outputs": {
