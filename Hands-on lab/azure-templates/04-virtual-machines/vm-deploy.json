@@ -3,19 +3,46 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vnetResourceGroup": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "仮想ネットワークのリソース グループ名"
+            }
         },
         "virtualNetworkId": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "仮想マシンを展開する仮想ネットワーク名"
+            }
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "仮想マシンを展開するサブネット名"
+            }
         },
         "adminUsername": {
-            "type": "string"
+            "type": "string", 
+            "metadata": {
+                "description": "管理者名"
+            }
         },
         "adminPassword": {
-            "type": "securestring"
+            "type": "securestring",
+            "metadata": {
+                "description": "管理者のパスワード"
+            }
+        },
+        "sqlAuthenticationLogin": {
+            "type": "string",
+            "metadata": {
+                "description": "SQL Server 認証の管理者"
+            }
+        },
+        "sqlAuthenticationPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "SQL Server 認証の管理者パスワード"
+            }
         }
     },
     "variables": {
@@ -66,6 +93,8 @@
                 "storageProfile": {
                     "osDisk": {
                         "createOption": "FromImage",
+                        "name": "[concat(variables('sqlVirtualMachineName'), '-osDisk')]",
+                        "caching": "None",
                         "managedDisk": {
                             "storageAccountType": "StandardSSD_LRS"
                         }
@@ -106,7 +135,21 @@
             "properties": {
                 "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
                 "sqlManagement": "Full",
-                "sqlServerLicenseType": "PAYG"
+                "sqlServerLicenseType": "PAYG",
+                "autoPatchingSettings": {
+                    "enable": false
+                },
+                "serverConfigurationsManagementSettings": {
+                    "sqlConnectivityUpdateSettings": {
+                        "connectivityType": "PRIVATE",
+                        "port": 1433,
+                        "sqlAuthUpdateUserName": "[parameters('sqlAuthenticationLogin')]",
+                        "sqlAuthUpdatePassword": "[parameters('sqlAuthenticationPassword')]"
+                    },
+                    "additionalFeaturesServerConfigurations": {
+                        "isRServicesEnabled": false
+                    }
+                }
             }
         }
     ],

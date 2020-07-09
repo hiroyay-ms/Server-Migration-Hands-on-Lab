@@ -46,7 +46,7 @@
       },
       "subnet2Name": {
         "type": "string",
-        "defaultValue": "Subnet2",
+        "defaultValue": "Subnet-2",
         "metadata": {
           "description": "Subnet 2 の名前"
         }
