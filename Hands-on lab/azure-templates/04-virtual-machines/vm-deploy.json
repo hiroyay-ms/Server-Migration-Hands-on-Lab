@@ -22,7 +22,7 @@
         "location": "[resourceGroup().location]",
 
         "vnetId": "[parameters('virtualNetworkId')]",
-        "subnetRef": "[resourceID(parameters('vnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('virtualNetworkId'), parameters('subnetName'))]",
+        "subnetRef": "[resourceID(parameters('vnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('subnetName'), parameters('virtualNetworkId'))]",
 
         "virtualMachineSize": "Standard_D2s_v3",
 
