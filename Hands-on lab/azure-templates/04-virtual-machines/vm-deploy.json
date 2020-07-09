@@ -2,10 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subnetName": {
+        "vnetResourceGroup": {
             "type": "string"
         },
         "virtualNetworkId": {
+            "type": "string"
+        },
+        "subnetName": {
             "type": "string"
         },
         "adminUsername": {
@@ -19,17 +22,13 @@
         "location": "[resourceGroup().location]",
 
         "vnetId": "[parameters('virtualNetworkId')]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "subnetRef": "[resourceID(parameters('vnetResourceGroup'), 'Microsoft.Network/virtualNetWorks/subnets', parameters('virtualNetworkId'), parameters('subnetName'))]",
 
         "virtualMachineSize": "Standard_D2s_v3",
 
         "sqlVirtualMachineName": "SQL-SVR",
         "sqlVirtualMachineComputerName": "SQL-SVR",
-        "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
-        "sql-osDiskType": "StandardSSD_LRS",
-        "sqlConnectivityType": "Private",
-        "sqlPortNumber": 1433,
-        "sqlStorageWorkloadType": "General"
+        "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]"
     },
     "resources": [
         {
