@@ -25,7 +25,6 @@
 
         "sqlVirtualMachineName": "SQL-SVR",
         "sqlVirtualMachineComputerName": "SQL-SVR",
-        "sqlVirtualMachineRG": "[resouceGroup()]",
         "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
         "sql-osDiskType": "StandardSSD_LRS",
         "sqlConnectivityType": "Private",
