@@ -11,7 +11,7 @@
       "Location": {
         "type": "string",
         "metadata": {
-          "description": "データセンター"
+          "description": "リージョン"
         }
       }
     },

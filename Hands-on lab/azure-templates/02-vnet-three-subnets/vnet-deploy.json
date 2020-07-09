@@ -55,7 +55,7 @@
         "type": "string",
         "defaultValue": "[resourceGroup().location]",
         "metadata": {
-          "description": "データセンター"
+          "description": "選択したリソース グループのリージョン"
         }
       }
     },
@@ -79,6 +79,9 @@
               "type":"subnets",
               "location": "[parameters('location')]", 
               "name": "AzureBastionSubnet",
+              "dependsOn": [
+                "[parameters('vnetName')]"
+              ],
               "properties": {
                   "addressPrefix": "[parameters('bastionSubnetPrefix')]"
               }
