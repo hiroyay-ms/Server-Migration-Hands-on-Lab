@@ -1,8 +1,8 @@
-# リソース グループの作成
+# 仮想マシンの作成
 
 ## パラメーター
 - Resource Group Name: リソース グループ名
-- Location: リージョン
+- vnetAddressPrefix: 仮想ネットワークの IPv4 アドレス空間
 
 <br />
 

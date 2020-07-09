@@ -1,8 +1,9 @@
-# リソース グループの作成
+# Azure Active Directory Domain Services の作成
 
 ## パラメーター
 - Resource Group Name: リソース グループ名
-- Location: リージョン
+- vnetAddressPrefix: 仮想ネットワークの IPv4 アドレス空間
+- 
 
 <br />
 
