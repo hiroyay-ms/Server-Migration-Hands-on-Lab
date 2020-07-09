@@ -11,14 +11,21 @@
       },
       "vnetAddressPrefix": {
         "type": "string",
-        "defaultValue": "10.0.0.0/16",
+        "defaultValue": "10.1.0.0/16",
         "metadata": {
           "description": "Address prefix"
         }
       },
+      "bastionSubnetPrefix": {
+          "type": "string",
+          "defaultValue": "10.1.0.0/24",
+          "metadata": {
+              "description": "Subnet Azure Bustion Prefix"
+          }
+      },
       "subnet1Prefix": {
         "type": "string",
-        "defaultValue": "10.0.0.0/24",
+        "defaultValue": "10.1.1.0/24",
         "metadata": {
           "description": "Subnet 1 Prefix"
         }
@@ -32,7 +39,7 @@
       },
       "subnet2Prefix": {
         "type": "string",
-        "defaultValue": "10.0.1.0/24",
+        "defaultValue": "10.1.2.0/24",
         "metadata": {
           "description": "Subnet 2 Prefix"
         }
@@ -67,6 +74,15 @@
           }
         },
         "resources": [
+          {
+              "apiVersion": "2018-10-01",
+              "type":"subnets",
+              "location": "[parameters('location')]", 
+              "name": "AzureBastionSubnet",
+              "properties": {
+                  "addressPrefix": "[parameters('bastionSubnetPrefix')]"
+              }
+          },
           {
             "apiVersion": "2018-10-01",
             "type": "subnets",
