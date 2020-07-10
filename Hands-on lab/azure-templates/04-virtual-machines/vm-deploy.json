@@ -22,6 +22,7 @@
         },
         "adminUsername": {
             "type": "string", 
+            "defaultValue": "AzureUser",
             "metadata": {
                 "description": "管理者名"
             }
@@ -33,7 +34,8 @@
             }
         },
         "sqlAuthenticationLogin": {
-            "type": "string",
+            "type": "string", 
+            "defaultValue": "SqlUser",
             "metadata": {
                 "description": "SQL Server 認証の管理者"
             }
