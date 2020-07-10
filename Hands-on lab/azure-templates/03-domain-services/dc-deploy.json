@@ -127,30 +127,28 @@
                         "enableAutomaticUpdates": true,
                         "provisionVMAgent": true
                     }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2019-12-01",
+            "name": "SetupVM",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.7",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUrls": [
+                        "[variables('customScriptUri')]"
+                    ]
                 },
-                "resources": [
-                    {
-                        "type": "extensions",
-                        "apiVersion": "2019-12-01",
-                        "name": "SetupVM",
-                        "location": "[variables('location')]",
-                        "dependsOn": [
-                            "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
-                        ],
-                        "properties": {
-                            "publisher": "Microsoft.Compute",
-                            "type": "CustomScriptExtension",
-                            "typeHandlerVersion": "1.7",
-                            "autoUpgradeMinorVersion": true,
-                            "settings": {
-                                "fileUrls": [
-                                    "[variables('customScriptUri')]"
-                                ]
-                            },
-                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('customScriptFileName'))]"
-                        }
-                    }
-                ]
+                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('customScriptFileName'))]"
             }
         }
     ],
