@@ -86,7 +86,8 @@
         "devVirtualMachineName": "Dev-Client",
         "devNetworkInterface": "[concat(variables('devVirtualMachineName'), '-NIC')]",
 
-        "networkSecurityGroupName": "[concat(parameters('subnetName'), '-NSG')]"
+        "networkSecurityGroupName": "[concat(parameters('subnetName'), '-NSG')]",
+        "denyInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Denly-Internet-Outbound')]"
     },
     "resources": [
         {
@@ -259,7 +260,7 @@
         {
             "type": "Microsoft.Network/networkSecurityGroups/securityRules",
             "apiVersion": "2020-04-01",
-            "name": "[concat(variables('networkSecurityGroupName'), 'Denly-Internet-Outbound')]",
+            "name": "[variables('denyInternetOutbound')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
             ],
