@@ -11,7 +11,7 @@ function Disable-InternetExplorerESC {
 Disable-InternetExplorerESC
 
 # Copy and Extract
-Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/Contoso.Web.zip' -OutFile 'C:\Contoso.zip'
+Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/Contoso.zip' -OutFile 'C:\Contoso.zip'
 Expand-Archive -LiteralPath 'C:\Contoso.zip' -DestinationPath 'C:\Contoso' -Force
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory('C:\Contoso.zip','C:\Contoso')
