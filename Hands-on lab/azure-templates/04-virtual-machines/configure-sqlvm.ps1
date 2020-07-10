@@ -11,6 +11,7 @@ function Disable-InternetExplorerESC {
 # Disable IE ESC
 Disable-InternetExplorerESC
 
+# Copy and Extract
 Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/ContosoInsurance.zip' -OutFile 'C:\ContosoInsurance.zip'
 Expand-Archive -LiteralPath 'C:\ContosoInsurance.zip' -DestinationPath 'C:\ContosoInsurance' -Force
 Add-Type -AssemblyName System.IO.Compression.FileSystem
