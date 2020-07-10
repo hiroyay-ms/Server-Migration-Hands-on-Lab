@@ -62,7 +62,7 @@
     "variables": {
       "location": "[resourceGroup().location]",
 
-      "networkSecurityGroupName": "[concat(parameters('subnetName'), '-NSG')]",
+      "networkSecurityGroupName": "Subnet-NSG",
       "denyInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Denly-Internet-Outbound')]",
 
       "bastionIPAddress": "[concat(parameters('bastionHostName'), '-NIC')]"
