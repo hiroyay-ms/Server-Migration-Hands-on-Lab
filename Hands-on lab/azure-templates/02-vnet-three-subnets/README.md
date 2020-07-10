@@ -1,7 +1,8 @@
 # 仮想ネットワークの作成
 
 仮想ネットワークと Azure Bastion の展開  
-仮想ネットワーク内には Azure Bastion 展開用とその他 2 つのサブネットを作成
+仮想ネットワーク内には Azure Bastion 展開用とその他 2 つのサブネットを作成  
+仮想マシン展開用のサブネットには Network Security Group（HTTP/S, FTP 以外のインターネット通信は禁止）を適用
 
 ## **パラメーター**
 - **vnetName**: 仮想ネットワーク名
