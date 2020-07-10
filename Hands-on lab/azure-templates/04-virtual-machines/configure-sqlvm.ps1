@@ -30,7 +30,7 @@ function Attach-SqlDatabase {
 
     $AttachCmd = "CREATE DATABASE [" + $DatabaseName + "] ON (FILENAME = '" + $MdfFileName + "'), (FILENAME = '" + $LdfFileName + "') for ATTACH"
 
-    Invoke-Sqlcmd -ServerInstancee $ServerName -Database "master" -Query $AttachCmd
+    Invoke-Sqlcmd -ServerInstance $ServerName -Query $AttachCmd
 }
 
 Attach-SqlDatabase
