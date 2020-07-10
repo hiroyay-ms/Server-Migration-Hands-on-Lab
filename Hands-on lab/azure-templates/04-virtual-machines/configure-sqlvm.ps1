@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 Copy-Item 'C:\ContosoInsurance\*' -Destination 'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA' -Recurse
 
 # Attach ContosoInsurance Database
-function Attach-SqlDatabase {
+function Enable-SqlDatabase {
     #Add snap-in
     Add-PSSnapin SqlServerCmdletSnapin* -ErrorAction SilentlyContinue
 
@@ -31,10 +31,10 @@ function Attach-SqlDatabase {
 
     $AttachCmd = "CREATE DATABASE [" + $DatabaseName + "] ON (FILENAME = '" + $MdfFileName + "'), (FILENAME = '" + $LdfFileName + "') for ATTACH"
 
-    Invoke-Sqlcmd -ServerInstance $ServerName -Username SqlUser -Password Password.1!! -Query $AttachCmd
+    Invoke-Sqlcmd -ServerInstance $ServerName -Database "master" -Username "SqlUser" -Password "Password.1!!" -Query $AttachCmd
 }
 
-Attach-SqlDatabase
+Enable-SqlDatabase
 
 # Time Zone settings
 tzutil /s "Tokyo Standard Time"
