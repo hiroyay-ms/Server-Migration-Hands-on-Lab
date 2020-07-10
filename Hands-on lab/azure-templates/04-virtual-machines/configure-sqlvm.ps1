@@ -27,9 +27,10 @@ function Attach-SqlDatabase {
     $FilePath = 'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\'
     $MdfFileName = $FilePath + 'ContosoInsurance.mdf'
     $LdfFileName = $FilePath + 'ContosoInsurance_log.ldf'
-    
-    $AttachCmd = "USE [master] CREATE DATABASE [$DatabaseName] ON (FILENAME ='$MdfFileName'),(FILENAME = '$LdfFileName') for ATTACH"
-    Invoke-Sqlcmd $AttachCmd -QueryTimeout 3600 -ServerInstance $ServerName
+
+    $AttachCmd = "CREATE DATABASE [" + $DatabaseName + "] ON (FILENAME = '" + $MdfFileName + "'), (FILENAME = '" + $LdfFileName + "') for ATTACH"
+
+    Invoke-Sqlcmd -ServerInstancee $ServerName -Database "master" -Query $AttachCmd
 }
 
 Attach-SqlDatabase
