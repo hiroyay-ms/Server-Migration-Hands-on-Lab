@@ -94,8 +94,8 @@
                         }
                     },
                     "imageReference": {
-                        "publisher": "[variables('MicrosoftWindowsServer')]",
-                        "offer": "[variables('WindowsServer')]",
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
                         "sku": "[variables('windowsOSVersion')]",
                         "version": "latest"
                     },
