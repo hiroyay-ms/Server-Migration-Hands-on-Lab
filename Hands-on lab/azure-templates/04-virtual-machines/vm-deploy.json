@@ -33,7 +33,7 @@
             }
         },
         "domainPassword": {
-            "type": "string",
+            "type": "securestring",
             "metadata": {
                 "description": "ドメイン ユーザー パスワード"
             }
@@ -81,7 +81,7 @@
         "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
 
         "sqlCustomScriptFileName": "configure-sqlvm.ps1",
-        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/03-domain-services/', variables('sqlCustomScriptFileName'))]",
+        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('sqlCustomScriptFileName'))]",
 
         "devVirtualMachineName": "Dev-Client",
         "devNetworkInterface": "[concat(variables('devVirtualMachineName'), '-NIC')]"
@@ -176,7 +176,7 @@
                 },
                 {
                     "type": "extensions",
-                    "apiVersion": "2019-03-01",
+                    "apiVersion": "2015-06-15",
                     "name": "JoinDomain",
                     "location": "[variables('location')]",
                     "dependsOn": [
@@ -185,8 +185,7 @@
                     "properties": {
                         "publisher": "Microsoft.Compute",
                         "type": "JsonADDomainExtension",
-                        "typeHandlerVersion": "1.9",
-                        "autoUpgradeMinorVersion": true,
+                        "typeHandlerVersion": "1.3",
                         "settings": {
                             "Name": "[parameters('domainToJoin')]",
                             "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
