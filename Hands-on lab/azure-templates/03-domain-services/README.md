@@ -1,16 +1,20 @@
 # Azure Active Directory Domain Services の作成
 
 ## パラメーター
-- 仮想マシン
+- 仮想マシンで構築する場合
   - vnetResourceGroup: 仮想マシンを展開する仮想ネットワークが存在するリソース グループ名
   - virtualNetworkId: 仮想マシンを展開する仮想ネットワーク名
   - subnetName: 仮想マシンを展開するサブネット名
   - adminUsername: 管理者
   - adminPassword: 管理者のパスワード
 
-### **サーバーの設定**
+### **サーバーの設定（仮想マシンで構築する場合）**
 Internet Explorer セキュリティ強化の構成（IE ESC）の無効化  
-Active Directory Domain Services ロールの追加（ドメイン コントローラーへの昇格は手動で実行）
+Active Directory Domain Services ロールの追加  
+
+### **手動構成（仮想マシンで構築する場合）**
+接続されているデータ ディスクから新しいシンプル ボリュームを作成  
+ドメイン コントローラーへの昇格
 
 <br />
 

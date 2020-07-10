@@ -20,17 +20,35 @@
                 "description": "仮想マシンを展開するサブネット名"
             }
         },
+        "domainToJoin": {
+            "type": "string",
+            "metadata": {
+                "description": "参加するドメイン名"
+            }
+        },
+        "domainUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "ドメイン ユーザー アカウント名"
+            }
+        },
+        "domainPassword": {
+            "type": "string",
+            "metadata": {
+                "description": "ドメイン ユーザー パスワード"
+            }
+        },
         "adminUsername": {
             "type": "string", 
             "defaultValue": "AzureUser",
             "metadata": {
-                "description": "管理者名"
+                "description": "ローカルの管理者名"
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "管理者のパスワード"
+                "description": "ローカルの管理者のパスワード"
             }
         },
         "sqlAuthenticationLogin": {
@@ -61,6 +79,9 @@
         "sqlVirtualMachineName": "SQL-SVR",
         "sqlVirtualMachineComputerName": "SQL-SVR",
         "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
+
+        "sqlCustomScriptFileName": "configure-sqlvm.ps1",
+        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/03-domain-services/', variables('sqlCustomScriptFileName'))]",
 
         "devVirtualMachineName": "Dev-Client",
         "devNetworkInterface": "[concat(variables('devVirtualMachineName'), '-NIC')]"
@@ -130,7 +151,54 @@
                         "provisionVMAgent": true
                     }
                 }
-            }
+            },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "apiVersion": "2019-03-01",
+                    "name": "SetupSqlVM",
+                    "location": "[variables('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "fileUris": [
+                                "[variables('sqlCustomScriptFileName')]"
+                            ],
+                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('sqlCustomScriptFileName'))]"
+                        }
+                    }
+                },
+                {
+                    "type": "extensions",
+                    "apiVersion": "2019-03-01",
+                    "name": "JoinDomain",
+                    "location": "[variables('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "JsonADDomainExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "Name": "[parameters('domainToJoin')]",
+                            "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
+                            "Restart": true,
+                            "Options": 3
+                        },
+                        "protectedSettings": {
+                            "Password": "[parameters('domainPassword')]"
+                        }
+                    }
+                }
+            ]
         },
         {
             "type": "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
