@@ -4,7 +4,6 @@
     "parameters": {
         "vnetResourceGroup": {
             "type": "string",
-            "defaultValue": "[resourceGroup().Name]",
             "metadata": {
                 "description": "仮想ネットワークのリソース グループ名"
             }
