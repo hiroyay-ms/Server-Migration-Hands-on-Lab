@@ -1,5 +1,8 @@
 # 仮想ネットワークの作成
 
+仮想ネットワークと Azure Bastion の展開  
+仮想ネットワーク内には Azure Bastion 展開用とその他 2 つのサブネットを作成
+
 ## **パラメーター**
 - **vnetName**: 仮想ネットワーク名
 - **vnetAddressPrefix**: 仮想ネットワークの IPv4 アドレス空間
