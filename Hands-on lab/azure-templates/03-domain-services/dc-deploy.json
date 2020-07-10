@@ -145,10 +145,10 @@
                         "typeHandlerVersion": "1.9",
                         "autoUpgradeMinorVersion": true,
                         "settings": {
-                            "fileUrls": [
-                                "https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/03-domain-services/configure-vm.ps1"
+                            "fileUris": [
+                                "[variables('customScriptUri')]"
                             ],
-                            "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-vm.ps1"
+                            "commandToExecute": "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('customScriptFileName'))]"
                         }
                     }
                 }
