@@ -51,19 +51,6 @@
             "metadata": {
                 "description": "ローカルの管理者のパスワード"
             }
-        },
-        "sqlAuthenticationLogin": {
-            "type": "string", 
-            "defaultValue": "SqlUser",
-            "metadata": {
-                "description": "SQL Server 認証の管理者"
-            }
-        },
-        "sqlAuthenticationPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "SQL Server 認証の管理者パスワード"
-            }
         }
     },
     "variables": {
@@ -80,6 +67,8 @@
         "sqlVirtualMachineName": "SQL-SVR",
         "sqlVirtualMachineComputerName": "SQL-SVR",
         "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
+        "sqlAuthenticationLogin": "SqlUser",
+        "sqlAuthenticationPassword": "Password.1!!",
 
         "sqlCustomScriptFileName": "configure-sqlvm.ps1",
         "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('sqlCustomScriptFileName'))]",
@@ -219,8 +208,8 @@
                     "sqlConnectivityUpdateSettings": {
                         "connectivityType": "PRIVATE",
                         "port": 1433,
-                        "sqlAuthUpdateUserName": "[parameters('sqlAuthenticationLogin')]",
-                        "sqlAuthUpdatePassword": "[parameters('sqlAuthenticationPassword')]"
+                        "sqlAuthUpdateUserName": "[variables('sqlAuthenticationLogin')]",
+                        "sqlAuthUpdatePassword": "[variables('sqlAuthenticationPassword')]"
                     },
                     "additionalFeaturesServerConfigurations": {
                         "isRServicesEnabled": false

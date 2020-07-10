@@ -7,7 +7,7 @@
 
 ### **仮想マシンの設定**
   展開する仮想ネットワーク、サブネット、管理者名、管理者パスワードは3台とも同じ  
-  SQL Server は SQL Server 認証を有効化、通信は仮想ネットワーク内で有効
+  SQL Server は SQL Server 認証を有効化（Username: SqlUser / Password: Password.1!!）、通信は仮想ネットワーク内で有効
 
 ### **サーバーの設定**
 Internet Explorer セキュリティ強化の構成（IE ESC）の無効化  
@@ -19,8 +19,6 @@ SQL Server に ContosoInsurance データベースをアタッチ
 - **subnetName**: 仮想マシンを展開するサブネット名
 - **adminUsername**: 管理者
 - **adminPassword**: 管理者パスワード
-- **sqlAuthenticationLogin**: SQL Server 認証の管理者
-- **sqlAuthenticationPassword**: SQL Server 認証の管理者パスワード
 
 <br />
 

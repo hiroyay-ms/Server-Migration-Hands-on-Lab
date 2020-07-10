@@ -31,10 +31,10 @@ function Attach-SqlDatabase {
 
     $AttachCmd = "CREATE DATABASE [" + $DatabaseName + "] ON (FILENAME = '" + $MdfFileName + "'), (FILENAME = '" + $LdfFileName + "') for ATTACH"
 
-    Invoke-Sqlcmd -ServerInstance $ServerName -Query $AttachCmd
+    Invoke-Sqlcmd -ServerInstance $ServerName -Username SqlUser -Password Password.1!! -Query $AttachCmd
 }
 
 Attach-SqlDatabase
 
 # Time Zone settings
-Set-TimeZone -Id "Tokyo Standard Time"
+tzutil /s "Tokyo Standard Time"
