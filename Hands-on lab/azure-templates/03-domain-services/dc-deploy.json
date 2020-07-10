@@ -148,7 +148,7 @@
                             "fileUrls": [
                                 "https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/03-domain-services/configure-vm.ps1"
                             ],
-                            "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File configure-vm.ps1')]"
+                            "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-vm.ps1"
                         }
                     }
                 }
