@@ -31,18 +31,6 @@
             "metadata": {
                 "description": "管理者のパスワード"
             }
-        },
-        "sqlAuthenticationLogin": {
-            "type": "string",
-            "metadata": {
-                "description": "SQL Server 認証の管理者"
-            }
-        },
-        "sqlAuthenticationPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "SQL Server 認証の管理者パスワード"
-            }
         }
     },
     "variables": {
@@ -53,19 +41,16 @@
 
         "virtualMachineSize": "Standard_D2s_v3",
 
-        "webVirtualMachineName": "Web-SVR",
-        "webNetworkInterface": "[concat(variables('webVirtualMachineName'), '-NIC')]",
+        "virtualMachineName": "DC-SVR",
+        "networkInterface": "[concat(variables('virtualMachineName'), '-NIC')]",
 
-        "sqlVirtualMachineName": "SQL-SVR",
-        "sqlVirtualMachineComputerName": "SQL-SVR",
-        "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
-
-        "devVirtualMachineName": "Dev-Client",
-        "devNetworkInterface": "[concat(variables('devVirtualMachineName'), '-NIC')]"
+        "imagePublisher": "MicrosoftWindowsServer",
+        "imageOffer": "WindowsServer",
+        "windowsOSVersion": "2019-Datacenter"
     },
     "resources": [
         {
-            "name": "[variables('sqlNetworkInterface')]",
+            "name": "[variables('networkInterface')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2019-07-01",
             "location": "[variables('location')]",
@@ -85,12 +70,12 @@
             }
         },
         {
-            "name": "[variables('sqlVirtualMachineName')]",
+            "name": "[variables('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2019-03-01",
             "location": "[variables('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', variables('sqlNetworkInterface'))]"
+                "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterface'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -99,61 +84,45 @@
                 "storageProfile": {
                     "osDisk": {
                         "createOption": "FromImage",
-                        "name": "[concat(variables('sqlVirtualMachineName'), '-osDisk')]",
+                        "name": "[concat(variables('virtualMachineName'), '-osDisk')]",
                         "caching": "None",
                         "managedDisk": {
                             "storageAccountType": "StandardSSD_LRS"
                         }
                     },
                     "imageReference": {
-                        "publisher": "MicrosoftSQLServer",
-                        "offer": "SQL2012SP4-WS2012R2",
-                        "sku": "Standard",
+                        "publisher": "[variables('MicrosoftWindowsServer')]",
+                        "offer": "[variables('WindowsServer')]",
+                        "sku": "[variables('windowsOSVersion')]",
                         "version": "latest"
-                    }
+                    },
+                    "dataDisks":[
+                        {
+                            "name": "[concat(variables('virtualMachineName'), '-dataDisk')]",
+                            "caching": "None",
+                            "createOption": "Empty",
+                            "diskSizeGB": 16,
+                            "managedDisk": {
+                                "storageAccountType": "StandardSSD_LRS"
+                            },
+                            "lun": 0
+                        }
+                    ]
                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('sqlNetworkInterface'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterface'))]"
                         }
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[variables('sqlVirtualMachineName')]",
+                    "computerName": "[variables('virtualMachineName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
                         "enableAutomaticUpdates": true,
                         "provisionVMAgent": true
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
-            "apiVersion": "2017-03-01-preview",
-            "name": "[variables('sqlVirtualMachineName')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
-            ],
-            "properties": {
-                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
-                "sqlManagement": "Full",
-                "sqlServerLicenseType": "PAYG",
-                "autoPatchingSettings": {
-                    "enable": false
-                },
-                "serverConfigurationsManagementSettings": {
-                    "sqlConnectivityUpdateSettings": {
-                        "connectivityType": "PRIVATE",
-                        "port": 1433,
-                        "sqlAuthUpdateUserName": "[parameters('sqlAuthenticationLogin')]",
-                        "sqlAuthUpdatePassword": "[parameters('sqlAuthenticationPassword')]"
-                    },
-                    "additionalFeaturesServerConfigurations": {
-                        "isRServicesEnabled": false
                     }
                 }
             }

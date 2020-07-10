@@ -1,8 +1,8 @@
 # リソース グループの作成
 
-## パラメーター
-- Resource Group Name: リソース グループ名
-- Location: リージョン
+## **パラメーター**
+- **Resource Group Name**: リソース グループ名
+- **Location**: リージョン
 
 <br />
 
