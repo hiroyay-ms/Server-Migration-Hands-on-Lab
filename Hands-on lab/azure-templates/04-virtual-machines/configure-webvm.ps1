@@ -11,10 +11,10 @@ function Disable-InternetExplorerESC {
 Disable-InternetExplorerESC
 
 # Copy and Extract
-Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/Contoso.Web.zip' -OutFile 'C:\Contoso.Web.zip'
-Expand-Archive -LiteralPath 'C:\Contoso.Web.zip' -DestinationPath 'C:\Contoso' -Force
+Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/Contoso.Web.zip' -OutFile 'C:\Contoso.zip'
+Expand-Archive -LiteralPath 'C:\Contoso.zip' -DestinationPath 'C:\Contoso' -Force
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\ContosoInsurance.zip','C:\Contoso')
+[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\Contoso.zip','C:\Contoso')
 
 # Web Server Role
 Install-WindowsFeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-Static-Content, Web-Health, Web-Http-Logging, Web-Performance, Web-Stat-Compression, Web-Dyn-Compression, Web-Security, Web-Filtering, Web-Basic-Auth, Web-Windows-Auth, Web-App-Dev, Web-Net-Ext45, Web-Asp-Net45, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Mgmt-Console
