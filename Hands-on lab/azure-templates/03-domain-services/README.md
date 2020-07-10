@@ -1,9 +1,16 @@
 # Azure Active Directory Domain Services の作成
 
 ## パラメーター
-- Resource Group Name: リソース グループ名
-- vnetAddressPrefix: 仮想ネットワークの IPv4 アドレス空間
-- 
+- 仮想マシン
+  - vnetResourceGroup: 仮想マシンを展開する仮想ネットワークが存在するリソース グループ名
+  - virtualNetworkId: 仮想マシンを展開する仮想ネットワーク名
+  - subnetName: 仮想マシンを展開するサブネット名
+  - adminUsername: 管理者
+  - adminPassword: 管理者のパスワード
+
+### **サーバーの設定**
+Internet Explorer セキュリティ強化の構成（IE ESC）の無効化  
+Active Directory Domain Services ロールの追加（ドメイン コントローラーへの昇格は手動で実行）
 
 <br />
 
