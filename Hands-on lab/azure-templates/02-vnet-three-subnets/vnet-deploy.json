@@ -134,8 +134,9 @@
         "name": "[parameters('bastionHostName')]",
         "location": "[variables('location')]",
         "dependsOn": [
+          "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastionIPAddress'))]",
           "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-          "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'AzureBastionSubnet')]"
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), 'AzureBastionSubnet')]"
         ],
         "properties": {
           "ipConfigurations": [

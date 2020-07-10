@@ -8,7 +8,7 @@
 - **subnet1Name**: サブネットの名前
 - **subnet2Prefix**: サブネット アドレス範囲
 - **subnet2Name**: サブネットの名前
-- **location**: リージョン（リソース グループと同じリージョンに作成する場合は既定値のまま変更しない）
+- **bastionHostName**: Azure Bastion ホスト名
 
 <br />
 
