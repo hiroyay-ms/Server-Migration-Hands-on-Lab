@@ -17,34 +17,6 @@
     },
     "resources": [
         {
-            "type": "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
-            "apiVersion": "2017-03-01-preview",
-            "name": "SQL-SVR",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
-            ],
-            "properties": {
-                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
-                "sqlManagement": "Full",
-                "sqlServerLicenseType": "PAYG",
-                "autoPatchingSettings": {
-                    "enable": false
-                },
-                "serverConfigurationsManagementSettings": {
-                    "sqlConnectivityUpdateSettings": {
-                        "connectivityType": "PRIVATE",
-                        "port": 1433,
-                        "sqlAuthUpdateUserName": "[variables('sqlAuthenticationLogin')]",
-                        "sqlAuthUpdatePassword": "[variables('sqlAuthenticationPassword')]"
-                    },
-                    "additionalFeaturesServerConfigurations": {
-                        "isRServicesEnabled": false
-                    }
-                }
-            }
-        },
-        {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2019-03-01",
             "name": "SetupSqlVM",
