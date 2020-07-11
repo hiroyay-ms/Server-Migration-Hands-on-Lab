@@ -12,9 +12,9 @@ function Disable-InternetExplorerESC {
 Disable-InternetExplorerESC
 
 # Download and Extract
-Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/SetupSql.zip' -OutFile 'C:\SetupSql.zip'
+Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/set-database.zip' -OutFile 'C:\_setup.zip'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\SetupSql.zip','C:\SetupSql')
+[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\_setup.zip','C:\_setup')
 
 Enable-SqlDatabase
 

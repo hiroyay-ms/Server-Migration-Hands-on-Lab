@@ -50,7 +50,7 @@
         "windowsOSVersion": "2019-Datacenter",
 
         "customScriptFileName": "configure-vm.ps1",
-        "customScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/03-domain-services/', variables('customScriptFileName'))]"
+        "customScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/azure-templates/03-domain-services/', variables('customScriptFileName'))]"
     },
     "resources": [
         {

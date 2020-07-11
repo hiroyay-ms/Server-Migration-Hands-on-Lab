@@ -10,6 +10,11 @@ function Disable-InternetExplorerESC {
 # Disable IE ESC
 Disable-InternetExplorerESC
 
+# Download and Extract
+Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/set-devclient.zip' -OutFile 'C:\_setup.zip'
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\_setup.zip','C:\_setup')
+
 # Other Settings
 Set-WinHomeLocation -GeoId 0x7A
 Set-WinSystemLocale -SystemLocale ja-JP

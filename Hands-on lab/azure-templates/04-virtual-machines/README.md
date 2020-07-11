@@ -12,7 +12,17 @@ SQL Server は SQL Server 認証を有効化（Username: SqlUser / Password: Pas
 
 ### **サーバーの設定**
 Internet Explorer セキュリティ強化の構成（IE ESC）の無効化
-SQL Server に C ドライブ直下に ContosoInsurance.zip をダウンロードし展開、ContosoInsurance データベースをアタッチ
+C ドライブ直下に _setup フォルダを作成
+
+### **仮想マシン展開後**
+- Web Server
+  - _setup フォルダ配下の set-webserver.ps1 を実行（IIS のインストールと Web アプリケーション、PDF ファイルをのダウンロード）
+  -  IIS 管理コンソールから Default Web Site 配下の Contoso をアプリケーションに変換
+  - C ドライブ直下の Public フォルダ（PDF ファイルが格納）を共有フォルダに設定
+- SQL Server
+  - _setup フォルダ配下の set-database.ps1 を実行（ContosoInsurance データベースをアタッチ）
+- Dev Client
+  - _setup フォルダ配下の set-devclient.ps1 を実行（Web アプリケーションのソース コードをダウンロード）
 
 ## **パラメーター**
 - **vnetResourceGroup**: 仮想マシンを展開する仮想ネットワークのリソース グループ名
@@ -23,4 +33,4 @@ SQL Server に C ドライブ直下に ContosoInsurance.zip をダウンロー�
 
 <br />
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FServer-Migration-Hands-on-Lab%2Fhiroyay%2FHands-on%2520lab%2Fazure-templates%2F04-virtual-machines%2Fvm-deploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2Fhiroyay-ms%2FServer-Migration-Hands-on-Lab%2Fmaster%2FHands-on%2520lab%2Fazure-templates%2F04-virtual-machines%2Fvm-deploy.json)
