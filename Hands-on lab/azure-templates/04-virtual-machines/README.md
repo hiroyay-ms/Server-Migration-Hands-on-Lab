@@ -12,7 +12,8 @@ SQL Server は SQL Server 認証を有効化（Username: SqlUser / Password: Pas
 
 ### **サーバーの設定**
 Internet Explorer セキュリティ強化の構成（IE ESC）の無効化
-SQL Server に C ドライブ直下に ContosoInsurance.zip をダウンロードし展開、ContosoInsurance データベースをアタッチ
+WebL Server の C ドライブ直下に SetupWeb.zip をダウンロードし解凍、展開終了後、仮想マシンにログインし SetupWeb.ps1 を実行  
+SQL Server の C ドライブ直下に SetupSql.zip をダウンロードし解凍、展開終了後、仮想マシンにログインし SetupSql.ps1 を実行
 
 ## **パラメーター**
 - **vnetResourceGroup**: 仮想マシンを展開する仮想ネットワークのリソース グループ名

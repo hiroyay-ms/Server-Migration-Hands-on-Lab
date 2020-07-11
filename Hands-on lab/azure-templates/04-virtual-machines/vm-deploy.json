@@ -65,7 +65,7 @@
         "webNetworkInterface": "[concat(variables('webVirtualMachineName'), '-NIC')]",
 
         "webCustomScriptFileName": "configure-webvm.ps1",
-        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('sqlCustomScriptFileName'))]",
+        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('webCustomScriptFileName'))]",
 
         "sqlVirtualMachineName": "SQL-SVR",
         "sqlVirtualMachineComputerName": "SQL-SVR",
@@ -189,6 +189,27 @@
                 }
             },
             "resources": [
+                {
+                    "type": "extensions",
+                    "apiVersion": "2019-03-01",
+                    "name": "SetupWebVM",
+                    "location": "[variables('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "fileUris": [
+                                "[variables('webCustomScriptUri')]"
+                            ],
+                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('webCustomScriptFileName'))]"
+                        }
+                    }
+                },
                 {
                     "type": "extensions",
                     "apiVersion": "2015-06-15",
