@@ -50,7 +50,7 @@
             "name": "SetupSqlVM",
             "location": "[variables('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', 'SQL-SVR')]"
+                "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
             ],
             "properties": {
                 "publisher": "Microsoft.Compute",
