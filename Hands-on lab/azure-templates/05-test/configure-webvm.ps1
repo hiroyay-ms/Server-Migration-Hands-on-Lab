@@ -15,7 +15,6 @@ Install-WindowsFeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-D
 
 # Copy
 Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/Contoso.zip' -OutFile 'C:\Contoso.zip'
-Expand-Archive -LiteralPath 'C:\Contoso.zip' -DestinationPath 'C:\Contoso' -Force
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory('C:\Contoso.zip','C:\Contoso')
 
