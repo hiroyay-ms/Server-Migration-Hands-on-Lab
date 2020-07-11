@@ -64,14 +64,23 @@
         "webVirtualMachineName": "Web-SVR",
         "webNetworkInterface": "[concat(variables('webVirtualMachineName'), '-NIC')]",
 
+        "webCustomScriptFileName": "configure-webvm.ps1",
+        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('sqlCustomScriptFileName'))]",
+
         "sqlVirtualMachineName": "SQL-SVR",
         "sqlVirtualMachineComputerName": "SQL-SVR",
         "sqlNetworkInterface": "[concat(variables('sqlVirtualMachineName'), '-NIC')]",
         "sqlAuthenticationLogin": "SqlUser",
         "sqlAuthenticationPassword": "Password.1!!",
 
+        "sqlCustomScriptFileName": "configure-sqlvm.ps1",
+        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('sqlCustomScriptFileName'))]",
+
         "devVirtualMachineName": "Dev-Client",
-        "devNetworkInterface": "[concat(variables('devVirtualMachineName'), '-NIC')]"
+        "devNetworkInterface": "[concat(variables('devVirtualMachineName'), '-NIC')]",
+
+        "devCustomScriptFileName": "configure-devvm.ps1",
+        "devCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('devCustomScriptFileName'))]"
     },
     "resources": [
         {
@@ -253,6 +262,27 @@
             "resources": [
                 {
                     "type": "extensions",
+                    "apiVersion": "2019-03-01",
+                    "name": "SetupSqlVM",
+                    "location": "[variables('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "fileUris": [
+                                "[variables('sqlCustomScriptUri')]"
+                            ],
+                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('sqlCustomScriptFileName'))]"
+                        }
+                    }
+                },
+                {
+                    "type": "extensions",
                     "apiVersion": "2015-06-15",
                     "name": "JoinDomain",
                     "location": "[variables('location')]",
@@ -350,6 +380,27 @@
                 }
             },
             "resources": [
+                {
+                    "type": "extensions",
+                    "apiVersion": "2019-03-01",
+                    "name": "SetupDevVM",
+                    "location": "[variables('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('devVirtualMachineName'))]"
+                    ],
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "fileUris": [
+                                "[variables('devCustomScriptUri')]"
+                            ],
+                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('devCustomScriptFileName'))]"
+                        }
+                    }
+                },
                 {
                     "type": "extensions",
                     "apiVersion": "2015-06-15",
