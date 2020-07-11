@@ -4,6 +4,9 @@
     "parameters": {},
     "variables": {
         "location": "[resourceGroup().location]",
+        
+        "sqlAuthenticationLogin": "SqlUser",
+        "sqlAuthenticationPassword": "Password.1!!",
 
         "webCustomScriptFileName": "configure-webvm.ps1",
         "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/05-vm-settings/', variables('sqlCustomScriptFileName'))]",
@@ -12,6 +15,34 @@
         "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/05-vm-settings/', variables('sqlCustomScriptFileName'))]"
     },
     "resources": [
+        {
+            "type": "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
+            "apiVersion": "2017-03-01-preview",
+            "name": "SQL-SVR",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', 'SQL-SVR')]"
+            ],
+            "properties": {
+                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', 'SQL-SVR']",
+                "sqlManagement": "Full",
+                "sqlServerLicenseType": "PAYG",
+                "autoPatchingSettings": {
+                    "enable": false
+                },
+                "serverConfigurationsManagementSettings": {
+                    "sqlConnectivityUpdateSettings": {
+                        "connectivityType": "PRIVATE",
+                        "port": 1433,
+                        "sqlAuthUpdateUserName": "[variables('sqlAuthenticationLogin')]",
+                        "sqlAuthUpdatePassword": "[variables('sqlAuthenticationPassword')]"
+                    },
+                    "additionalFeaturesServerConfigurations": {
+                        "isRServicesEnabled": false
+                    }
+                }
+            }
+        },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2019-03-01",
