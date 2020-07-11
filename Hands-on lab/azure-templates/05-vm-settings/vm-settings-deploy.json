@@ -4,7 +4,8 @@
     "parameters": {},
     "variables": {
         "location": "[resourceGroup().location]",
-        
+
+        "sqlVirtualMachineName": "SQL-SVR",
         "sqlAuthenticationLogin": "SqlUser",
         "sqlAuthenticationPassword": "Password.1!!",
 
@@ -21,10 +22,10 @@
             "name": "SQL-SVR",
             "location": "[variables('location')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', 'SQL-SVR')]"
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
             ],
             "properties": {
-                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', 'SQL-SVR']",
+                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
                 "sqlManagement": "Full",
                 "sqlServerLicenseType": "PAYG",
                 "autoPatchingSettings": {
