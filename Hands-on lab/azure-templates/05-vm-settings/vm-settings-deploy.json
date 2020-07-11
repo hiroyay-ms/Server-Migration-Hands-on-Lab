@@ -3,6 +3,8 @@
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {
+        "location": "[resourceGroup().location]",
+
         "webCustomScriptFileName": "configure-webvm.ps1",
         "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/05-vm-settings/', variables('sqlCustomScriptFileName'))]",
 
