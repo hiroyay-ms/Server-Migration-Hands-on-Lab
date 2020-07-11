@@ -11,9 +11,9 @@ function Disable-InternetExplorerESC {
 Disable-InternetExplorerESC
 
 # Download and Extract
-Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/SetupWeb.zip' -OutFile 'C:\SetupWeb.zip'
+Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/master/Hands-on%20lab/src/set-webserver.zip' -OutFile 'C:\_setup.zip'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\SetupWeb.zip','C:\SetupWeb')
+[System.IO.Compression.ZipFile]::ExtractToDirectory('C:\_setup.zip','C:\_setup')
 
 # Time Zone settings
 tzutil /s "Tokyo Standard Time"
