@@ -17,23 +17,43 @@
     },
     "resources": [
         {
-            "type": "extensions",
-            "apiVersion": "2019-03-01",
-            "name": "SetupSqlVM",
-            "location": "[variables('location')]",
+            "apiVersion": "2015-01-01",
+            "type": "Microsoft.Resources/deployments",
+            "name": "updateVM",
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
             ],
             "properties": {
-                "publisher": "Microsoft.Compute",
-                "type": "CustomScriptExtension",
-                "typeHandlerVersion": "1.9",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "fileUris": [
-                        "[variables('sqlCustomScriptUri')]"
-                    ],
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('sqlCustomScriptFileName'))]"
+                "mode": "Incremental",
+                "parameters": {},
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Compute/virtualMachines/extensions",
+                            "apiVersion": "2019-03-01",
+                            "name": "SetupSqlVM",
+                            "location": "[variables('location')]",
+                            "dependsOn": [
+                                "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
+                            ],
+                            "properties": {
+                                "publisher": "Microsoft.Compute",
+                                "type": "CustomScriptExtension",
+                                "typeHandlerVersion": "1.9",
+                                "autoUpgradeMinorVersion": true,
+                                "settings": {
+                                    "fileUris": [
+                                        "[variables('sqlCustomScriptUri')]"
+                                    ],
+                                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('sqlCustomScriptFileName'))]"
+                                }
+                            }
+                        }
+                    ]
                 }
             }
         }
