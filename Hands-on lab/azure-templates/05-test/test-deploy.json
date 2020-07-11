@@ -65,7 +65,7 @@
         "webNetworkInterface": "[concat(variables('webVirtualMachineName'), '-NIC')]",
 
         "webCustomScriptFileName": "configure-devvm.ps1",
-        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('devCustomScriptFileName'))]"
+        "webCustomScriptUri": "[concat('https://raw.githubusercontent.com/hiroyay-ms/Server-Migration-Hands-on-Lab/hiroyay/Hands-on%20lab/azure-templates/04-virtual-machines/', variables('webCustomScriptFileName'))]"
     },
     "resources": [
         {
