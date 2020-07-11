@@ -17,7 +17,7 @@
     },
     "resources": [
         {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "type": "extensions",
             "apiVersion": "2019-03-01",
             "name": "SetupSqlVM",
             "location": "[variables('location')]",
