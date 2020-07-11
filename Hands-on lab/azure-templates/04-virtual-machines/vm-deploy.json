@@ -191,27 +191,6 @@
             "resources": [
                 {
                     "type": "extensions",
-                    "apiVersion": "2019-03-01",
-                    "name": "SetupWebVM",
-                    "location": "[variables('location')]",
-                    "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]"
-                    ],
-                    "properties": {
-                        "publisher": "Microsoft.Compute",
-                        "type": "CustomScriptExtension",
-                        "typeHandlerVersion": "1.9",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "fileUris": [
-                                "[variables('webCustomScriptUri')]"
-                            ],
-                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('webCustomScriptFileName'))]"
-                        }
-                    }
-                },
-                {
-                    "type": "extensions",
                     "apiVersion": "2015-06-15",
                     "name": "JoinDomain",
                     "location": "[variables('location')]",
@@ -446,6 +425,55 @@
                     }
                 }
             ]
+        },
+        {
+            "apiVersion": "2015-01-01",
+            "type": "Microsoft.Resources/deployments",
+            "name": "updateVM",
+            "dependsOn": [
+                "[variables('webVirtualMachineName')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {},
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Compute/virtualMachines",
+                            "apiVersion": "2019-03-01",
+                            "name": "[variables('webVirtualMachineName')]",
+                            "location": "[variables('location')]",
+                            "resources": [
+                                {
+                                    "type": "extensions",
+                                    "apiVersion": "2019-03-01",
+                                    "name": "SetupWebVM",
+                                    "location": "[variables('location')]",
+                                    "dependsOn": [
+                                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]"
+                                    ],
+                                    "properties": {
+                                        "publisher": "Microsoft.Compute",
+                                        "type": "CustomScriptExtension",
+                                        "typeHandlerVersion": "1.9",
+                                        "autoUpgradeMinorVersion": true,
+                                        "settings": {
+                                            "fileUris": [
+                                                "[variables('webCustomScriptUri')]"
+                                            ],
+                                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('webCustomScriptFileName'))]"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
         }
     ],
     "outputs": {
