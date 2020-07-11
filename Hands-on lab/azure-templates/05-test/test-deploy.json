@@ -65,7 +65,7 @@
         "webNetworkInterface": "[concat(variables('webVirtualMachineName'), '-NIC')]",
 
         "webCustomScriptFileName": "configure-webvm.ps1",
-        "webCustomScriptUri": "[concat('https://github.com/hiroyay-ms/Server-Migration-Hands-on-Lab/blob/hiroyay/Hands-on%20lab/azure-templates/05-test/', variables('sqlCustomScriptFileName'))]"    },
+        "webCustomScriptUri": "[concat('https://github.com/hiroyay-ms/Server-Migration-Hands-on-Lab/blob/hiroyay/Hands-on%20lab/azure-templates/05-test/', variables('webCustomScriptFileName'))]"    },
     "resources": [
         {
             "type": "Microsoft.Network/networkInterfaces",
