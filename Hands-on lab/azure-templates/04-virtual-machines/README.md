@@ -12,7 +12,8 @@ SQL Server は SQL Server 認証を有効化（Username: SqlUser / Password: Pas
 
 ### **サーバーの設定**
 Internet Explorer セキュリティ強化の構成（IE ESC）の無効化
-C ドライブ直下に _setup フォルダを作成
+C ドライブ直下に _setup フォルダを作成  
+タイムゾーンを Tokyo Standard Time に設定
 
 ### **仮想マシン展開後**
 - Web Server
