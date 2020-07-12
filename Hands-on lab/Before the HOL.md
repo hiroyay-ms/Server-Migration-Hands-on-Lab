@@ -37,7 +37,7 @@ July 2020
 
 # Before the hands-on lab
 
-<img src="images/hands-on-environment.png" />
+<img src="images/Hands-on-Environment.png" />
 <hr style="border-top: 1px solid #ccc; border-bottom: 1px solid #fff;" />
 
 ## Task 1: リソース グループのプロビジョニング
@@ -67,16 +67,16 @@ July 2020
 **Turn off Windows Installer**
   - **Enabled** に設定
   - [Disable Windows Installer] を **Never** に設定  
-<img src="images/Turn-off-Windows-Installer.PNG" />
+    <img src="images/Turn-off-Windows-Installer.png" />
 - ソフトウェアの制限ポリシーの作成
 
   [Computer Configuration] - [Windows Settings] - [Security Settings]   **Software Restriction Policies**  
   - Software Restriction Policies を右クリックし **New Software Restriction Policies** を選択  
-  <img src="images/New-Software-Restriction-Policies.png" />
+    <img src="images/New-Software-Restriction-Policies.png" />
   - **Enforcement** のプロパティを設定
 
     Apply software restriction policies to the following user: **All users except local administrators**  
-  <img src="images/Enforcement-Properties.png" />
+    <img src="images/Enforcement-Properties.png" />
 
 ## Task 4: 仮想マシンのプロビジョニング
 Web サーバー、データベース サーバー、開発マシンの３台の仮想マシンを作成
@@ -89,23 +89,23 @@ Web サーバー、データベース サーバー、開発マシンの３台の
 - **Web サーバー**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-webserver.ps1  
-    <img src="images/set-webserver.png" />
+      <img src="images/set-webserver.png" />
     - IIS のインストール
     - Web アプリケーションの c:\inetpub\wwwroot へのコピー
     - ドキュメントのダウンロード
   - ASP.NET アプリケーションの作成  
   IIS 管理コンソールから Default Web Site 配下の Contoso を右クリックし**Convert to Application** を選択  
 
-    <img src="images/IIS-Management-Console.png" />
+      <img src="images/IIS-Management-Console.png" />
 
   - 共有フォルダの設定  
   C ドライブ直下の Public フォルダを共有フォルダに設定  
 
-    <img src="images/Shared-Folder.png" />
+      <img src="images/Shared-Folder.png" />
 - **データベース サーバー**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-database.ps1  
-  <img src="images/set-database.png" />
+    <img src="images/set-database.png" />
 
     - ContosoInsurance データベースをアタッチ  
 
@@ -113,28 +113,28 @@ Web サーバー、データベース サーバー、開発マシンの３台の
 - **開発マシン**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-devclient.ps1  
-  <img src="images/set-devclient.png" />
+    <img src="images/set-devclient.png" />
 
   - モダンブラウザのインストール    
     <img src="images/Chrome.png" />
 
-    - Chrome, Chromium ベースの Edge の場合、PDF をブラウザ内で開くよう拡張機能を設定  
+  - Chrome, Chromium ベースの Edge の場合、PDF をブラウザ内で開くよう拡張機能を設定  
     <img src="images/enabled-local-file-link.png" />
 
   - Adobe Reader をインストール  
-  <img src="images/Adobe-Reader.png" />
+    <img src="images/Adobe-Reader.png" />
 
 
 ## Task 6: 動作確認
 Web アプリケーションの動作確認
 
 - http://web-svr/Contoso/ へアクセス  
-<img src="images/ASPNET-Web-App-01.png" />
+  <img src="images/ASPNET-Web-App-01.png" />
 - **Manage Policy Holders** をクリック  
-<img src="images/ASPNET-Web-App-02.png" />  
+  <img src="images/ASPNET-Web-App-02.png" />  
 データベースから情報が取得できることを確認
 - **Details** をクリック  
-<img src="images/ASPNET-Web-App-03.png" />
+  <img src="images/ASPNET-Web-App-03.png" />
 - File Path に表示される .pdf ファイル名をクリック
-<img src="images/ASPNET-Web-App-04.png" />  
+  <img src="images/ASPNET-Web-App-04.png" />  
 PDF ファイルが開くことを確認
