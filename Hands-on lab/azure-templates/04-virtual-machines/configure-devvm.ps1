@@ -16,8 +16,8 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory('C:\_setup.zip','C:\_setup')
 
 # Other Settings
-Set-WinHomeLocation -GeoId 0x7A
-Set-WinSystemLocale -SystemLocale ja-JP
+# Set-WinHomeLocation -GeoId 0x7A
+# Set-WinSystemLocale -SystemLocale ja-JP
 Set-TimeZone -Id "Tokyo Standard Time"
 
-Restart-Computer
+# Restart-Computer
