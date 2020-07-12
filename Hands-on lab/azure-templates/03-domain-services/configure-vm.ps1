@@ -14,8 +14,8 @@ Disable-InternetExplorerESC
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
 # Other Settings
-Set-WinHomeLocation -GeoId 0x7A
-Set-WinSystemLocale -SystemLocale ja-JP
+# Set-WinHomeLocation -GeoId 0x7A
+# Set-WinSystemLocale -SystemLocale ja-JP
 Set-TimeZone -Id "Tokyo Standard Time"
 
-Restart-Computer
+# Restart-Computer
