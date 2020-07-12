@@ -42,22 +42,22 @@ July 2020
 
 ## Task 1: リソース グループのプロビジョニング
 ハンズオン ラボで使用するリソースのコンテナーとして機能するリソース グループを作成  
-- <a href="https://portal.azure.com">Azure ポータル</a>から作成、もしくは、<a href="azure-templates/01-resource-group/README.md">リソースのプロビジョニング ページ</a>で「Deploy to Azure」ボタンをクリック
+- <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>から作成、もしくは、<a href="azure-templates/01-resource-group/README.md" target="_blank">リソースのプロビジョニング ページ</a>で「Deploy to Azure」ボタンをクリック
 
 ## Task 2: 仮想ネットワークと Azure Bastion のプロビジョニング
 移行対象の仮想マシンの展開先となる仮想ネットワークとジャンプボックスとなる Azure Bastion を作成  
 仮想ネットワークのサブネットには HTTP/S, FTP のみインターネット通信を許可するネットワーク セキュリティ グループを作成
 
-- <a href="azure-templates/02-vnet-three-subnets/README.md">リソースのプロビジョニング ページ</a> で「Deploy to Azure」をクリック
+- <a href="azure-templates/02-vnet-three-subnets/README.md" target="_blank">リソースのプロビジョニング ページ</a> で「Deploy to Azure」をクリック
 
 ## Task 3: Active Directory ドメイン サービスの展開
 仮想ネットワークで利用するドメイン コントローラーを作成
 
-- <a href="azure-templates/03-domain-services/README.md">リソースのプロビジョニング ページ</a> で「Deploy to Azure」をクリック
+- <a href="azure-templates/03-domain-services/README.md" target="_blank">リソースのプロビジョニング ページ</a> で「Deploy to Azure」をクリック
 - 展開終了後、仮想マシンにログインしド**メイン コントローラーへ昇格**を実行
 
 仮想ネットワークの DNS 設定をドメイン コントローラーの IP アドレスに設定
-- <a href="https://portal.azure.com">Azure ポータル</a>にて仮想ネットワークの「DNS サーバー」をカスタムに変更  
+- <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>にて仮想ネットワークの「DNS サーバー」をカスタムに変更  
 作成したドメイン コントローラーの IP アドレスを指定  
 <img src="images/DNS-Server.PNG" />
 
@@ -68,18 +68,20 @@ July 2020
   - **Enabled** に設定
   - [Disable Windows Installer] を **Never** に設定  
 <img src="images/Turn-off-Windows-Installer.PNG" />
-- ソフトウェアの制限ポリシーの作成  
-[Computer Configuration] - [Windows Settings] - [Security Settings]   **Software Restriction Policies**  
+- ソフトウェアの制限ポリシーの作成
+
+  [Computer Configuration] - [Windows Settings] - [Security Settings]   **Software Restriction Policies**  
   - Software Restriction Policies を右クリックし **New Software Restriction Policies** を選択  
   <img src="images/New-Software-Restriction-Policies.png" />
-  - **Enforcement** のプロパティを設定  
-  Apply software restriction policies to the following user: **All users except local administrators**  
+  - **Enforcement** のプロパティを設定
+
+    Apply software restriction policies to the following user: **All users except local administrators**  
   <img src="images/Enforcement-Properties.png" />
 
 ## Task 4: 仮想マシンのプロビジョニング
 Web サーバー、データベース サーバー、開発マシンの３台の仮想マシンを作成
 
-- <a href="azure-templates/04-virtual-machines/README.md">リソースのプロビジョニング ページ</a> で「Deploy to Azure」をクリック
+- <a href="azure-templates/04-virtual-machines/README.md" target="_blank">リソースのプロビジョニング ページ</a> で「Deploy to Azure」をクリック
 
 ## Task 5: 仮想マシンの設定
 展開した各仮想マシンの設定
@@ -93,26 +95,35 @@ Web サーバー、データベース サーバー、開発マシンの３台の
     - ドキュメントのダウンロード
   - ASP.NET アプリケーションの作成  
   IIS 管理コンソールから Default Web Site 配下の Contoso を右クリックし**Convert to Application** を選択  
-  <img src="images/IIS-Management-Console.png" />
+
+    <img src="images/IIS-Management-Console.png" />
+
   - 共有フォルダの設定  
   C ドライブ直下の Public フォルダを共有フォルダに設定  
-  <img src="images/Shared-Folder.png" />
+
+    <img src="images/Shared-Folder.png" />
 - **データベース サーバー**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-database.ps1  
   <img src="images/set-database.png" />
+
     - ContosoInsurance データベースをアタッチ  
-    <img src="images/SQL-Server-Management-Studio.png" />
+
+      <img src="images/SQL-Server-Management-Studio.png" />
 - **開発マシン**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-devclient.ps1  
   <img src="images/set-devclient.png" />
+
   - モダンブラウザのインストール    
     <img src="images/Chrome.png" />
+
     - Chrome, Chromium ベースの Edge の場合、PDF をブラウザ内で開くよう拡張機能を設定  
     <img src="images/enabled-local-file-link.png" />
+
   - Adobe Reader をインストール  
   <img src="images/Adobe-Reader.png" />
+
 
 ## Task 6: 動作確認
 Web アプリケーションの動作確認
