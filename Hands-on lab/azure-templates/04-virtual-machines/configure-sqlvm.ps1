@@ -16,7 +16,5 @@ Invoke-WebRequest 'https://raw.githubusercontent.com/hiroyay-ms/Server-Migration
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory('C:\_setup.zip','C:\_setup')
 
-Enable-SqlDatabase
-
 # Time Zone settings
 tzutil /s "Tokyo Standard Time"
