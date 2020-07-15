@@ -29,6 +29,8 @@ Contoso のアプリケーションをクラウドでホストするための準
 
 ## **ソリューション アーキテクチャ**
 
+<img src="images/Solution-Architecture.png" />
+
 ## **事前準備**
 - **Web アプリケーションの確認**
 - **データベースの確認**
@@ -44,6 +46,12 @@ Azure SQL Database にデータを移行する際に対処する必要のある�
 Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデータベースの評価を実行
 ## **Task 2**: Azure SQL Database へのデータ移行  
 オンプレミス データベースから Azure SQL Database へ移行 
+
+<br />
+
+## **criteria**
+- Data Migration Assistant による移行評価レポートの作成する
+- クエリ エディターを使用し 取得したテーブル内のレコード件数が SQL Server のレコード件数と同数である
 
 <br />
 
@@ -97,6 +105,12 @@ REVERT;
 
 <br />
 
+## **criteria**
+- Advanced Data Security 機能を有効化する
+- クエリ エディターから SELECT 句を実行し、マスキングされたデータを参照できる
+
+<br />
+
 ### **参考情報**
 - **Advanced Data Security**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/advanced-data-security>
@@ -119,6 +133,11 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 ## **Task 2**: Web Apps へのアプリケーションの移行
 移行先となる Web Apps の作成  
 アプリケーションの移行
+
+<br />
+
+### **criteria**
+- Web ブラウザーに Web Apps の URL を入力しアプリケーションの正しく表示できる
 
 <br />
 
@@ -157,6 +176,12 @@ Key Vault を作成し、データベースへの接続文字列をキー コン
 データベースの接続文字列を Key Vault シークレットの URI を参照するように指定
 ## **Task 3**: 自動スケールの設定
 CPU 負荷が閾値を超えた場合にアプリケーションがスケール アウトするよう構成
+
+<br />
+
+## **criteria**
+- Key Vault サービスが正しく構成され、マネージド ID を使用してシークレット情報を取得できる
+- アプリケーションからデータベース内の情報を取得し表示できる
 
 <br />
 
@@ -208,16 +233,17 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
   - Web Apps 
   - SQL Database
 ## **Task 2**: プライベート DNS ゾーンの構成
-プライベート DNS ゾーンの作成  
-DNS レコードの登録  
 仮想ネットワーク リンクの設定
-## **Task 3**: 疎通確認
-アプリケーションへのアクセス確認  
-    - プライベート ネットワークから  
-    - インターネットから
+
 ## **Appendix**（時間があれば、以下の PaaS サービスのプライベート エンドポイントも構成）
   - Azure Storage
   - Key Vault
+
+<br />
+
+## **criteria**
+- インターネット経由ではアプリケーションの表示が不可、VNet 内の仮想マシンからのみ表示できる
+- SQL Server の SQL Server Management Studio から SQL Database へ接続できる
 
 <br />
 
@@ -251,9 +277,9 @@ DNS レコードの登録
 この演習では、Application Insights を Web Apps に追加し、アプリケーションに対するリクエストのインサイトを収集します。
 演習中に負荷テスト ツールを使用し、動的にスケーリングが開始され、サーバーの割り当て数が増加することも確認します。
 
-## **Task 1**: Application Insights の有効化
-Application Insights インスタンスのプロビジョニング  
-Live Metrics Stream を使用したリアルタイム監視の開始
+## **Task 1**: Application Insights の有効化とアラート ルールの作成
+Application Insights インスタンスのプロビジョニング    
+自動スケールの開始を検知し管理者に通知を行うルールの作成
 
 ## **Task 2**: 負荷テストの実行
 k6 のインストール（<https://k6.io/docs/getting-started/installation>）  
@@ -274,11 +300,17 @@ export default function() {
 
 負荷テストの実行
 ```
-k6 run --vus 500 --duration 300s script.js
+k6 run --vus 500 --duration 360s script.js
 ```
 - **vus**: 仮想ユーザー数（並列実行数）
 - **duration**: テストを実行する時間
 - **script.js**: 生成した JavaScript ファイルを指定
+
+<br />
+
+## **criteria**
+- 負荷テスト実行時に自動スケールにより Web Apps のインスタンス数が増加する
+- 自動スケールの開始を検知し管理者にメールが通知されることを確認する
 
 <br />
 
@@ -296,7 +328,7 @@ k6 run --vus 500 --duration 300s script.js
 
 <br />
 
-# **Exercise 8: Web アプリケーションへの認証追加と外部公開**
+# **Exercise 8: Web アプリケーションの外部公開**
 
 ## **Task 1**: 
 ## **Task 2**: 

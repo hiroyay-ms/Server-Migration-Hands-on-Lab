@@ -67,7 +67,7 @@ July 2020
 **Turn off Windows Installer**
   - **Enabled** に設定
   - [Disable Windows Installer] を **Never** に設定  
-    <img src="images/Turn-off-Windows-Installer.png" />
+      <img src="images/Turn-off-Windows-Installer.png" />
 - ソフトウェアの制限ポリシーの作成
 
   [Computer Configuration] - [Windows Settings] - [Security Settings]   **Software Restriction Policies**  
@@ -89,7 +89,7 @@ Web サーバー、データベース サーバー、開発マシンの３台の
 - **Web サーバー**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-webserver.ps1  
-      <img src="images/set-webserver.png" />
+        <img src="images/set-webserver.png" />
     - IIS のインストール
     - Web アプリケーションの c:\inetpub\wwwroot へのコピー
     - ドキュメントのダウンロード
@@ -105,7 +105,7 @@ Web サーバー、データベース サーバー、開発マシンの３台の
 - **データベース サーバー**
   - C ドライブ直下の **_setup** フォルダ内にある PowerShell スクリプトを実行  
   set-database.ps1  
-    <img src="images/set-database.png" />
+      <img src="images/set-database.png" />
 
     - ContosoInsurance データベースをアタッチ  
 
@@ -122,19 +122,23 @@ Web サーバー、データベース サーバー、開発マシンの３台の
     <img src="images/enabled-local-file-link.png" />
 
   - Adobe Reader をインストール  
-    <img src="images/Adobe-Reader.png" />
+      <img src="images/Adobe-Reader.png" />
 
 
 ## Task 6: 動作確認
 Web アプリケーションの動作確認
 
 - http://web-svr/Contoso/ へアクセス  
-  <img src="images/ASPNET-Web-App-01.png" />
+    <img src="images/ASPNET-Web-App-01.png" />
+
 - **Manage Policy Holders** をクリック  
-  <img src="images/ASPNET-Web-App-02.png" />  
+    <img src="images/ASPNET-Web-App-02.png" />
+
 データベースから情報が取得できることを確認
+
 - **Details** をクリック  
-  <img src="images/ASPNET-Web-App-03.png" />
+    <img src="images/ASPNET-Web-App-03.png" />
+
 - File Path に表示される .pdf ファイル名をクリック
-  <img src="images/ASPNET-Web-App-04.png" />  
+    <img src="images/ASPNET-Web-App-04.png" />  
 PDF ファイルが開くことを確認
