@@ -352,116 +352,105 @@ July 2020
    <img src="images/prep/6-24.png" />  
   
   
-### **Task XX: **  
+### **Task 7: SQL Server 2012 仮想マシンの作成 **  
   
-1. action  
-   <img src="images/prep/xxx.png" />  
   
-   > memo  
+### **Task 8: Windows 10 仮想マシンの作成 **  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
   
-     > memo  
+### **Task 9: 仮想マシンのドメイン参加 **  
   
-2. action  
-   <img src="images/prep/xxx.png" />  
+1. ホーム画面から **Azure Active Directory** をクリック   
+   <img src="images/prep/9-1.png" />  
   
-   > memo  
+2. 左側のブレードの**管理**から**ユーザー**をクリック  
+   <img src="images/prep/9-2.png" />  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
+3. **新しいユーザー**をクリック  
+   <img src="images/prep/9-3.png" />  
   
-     > memo  
+4. **ユーザーの作成**で以下の情報を入力し**作成**をクリック  
+   - **ID**  
+       - **ユーザー名**: 任意  
+       - **名前**: 任意  
+   - **パスワード**  
+       - **自分でパスワードを作成する**  
+       - **初期パスワード**: 任意  
+       <img src="images/prep/9-4-1.png" />  
+   - **グループとロール**  
+       - **グループ**: **0 個のグループが選択されました**をクリック 
+           - **AAD DC Administorators** を選択し**選択**をクリックし元の設定画面のメッセージが **1 個のグループが選択されました**となっていることを確認
+       - **役割**: ユーザー  
+       <img src="images/prep/9-4-2.png" />  
   
-3. action  
-   <img src="images/prep/xxx.png" />  
+5. ユーザーが正常に作成されたことを確認  
+   <img src="images/prep/9-5.png" />  
   
-   > memo  
+6. ホーム画面からリソースグループ一覧を表示  
+   <img src="images/prep/9-6.png" />  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
+7. 作成したリソースグループ名をクリック  
+   <img src="images/prep/9-7.png" />  
   
-     > memo  
+8. 先の手順で作成した Azure AD Domain Services 名をクリック   
+   <img src="images/prep/9-8.png" />  
   
-4. action  
-   <img src="images/prep/xxx.png" />  
+9. 左側のブレードの**設定**から**正常性**をクリックし **Azure AD との同期**で表示されている時刻が先ほどユーザーを作成した時刻より後になっていることを確認  
+   <img src="images/prep/9-9.png" />  
   
-   > memo  
+10. 左側のブレードの**設定**から**プロパティ**をクリックし**仮想ネットワーク上の IP アドレス**を確認  
+   <img src="images/prep/9-10.png" />  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
+11. ホーム画面からリソースグループ一覧を表示  
+    <img src="images/prep/9-11.png" />  
   
-     > memo  
+12. 作成したリソースグループ名をクリック  
+    <img src="images/prep/9-12.png" />  
   
-5. action  
-   <img src="images/prep/xxx.png" />  
+13. 先の手順で作成した仮想ネットワーク名をクリック  
+    <img src="images/prep/9-13.png" />  
   
-   > memo  
+14. 左側のブレードの**設定**から **DNS サーバ**をクリックし以下の項目を設定し**保存**をクリック  
+    - **DNS サーバー**: カスタム  
+    - **DNS サーバの追加**: 先の手順で確認した IP アドレスを入力  
+   <img src="images/prep/9-14.png" />  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
+15. ホーム画面からリソースグループ一覧を表示  
+    <img src="images/prep/9-15.png" />  
   
-     > memo  
+16. 作成したリソースグループ名をクリック  
+    <img src="images/prep/9-16.png" />  
   
-6. action  
-   <img src="images/prep/xxx.png" />  
+17. 先の手順で作成した仮想マシン名をクリック  
+    <img src="images/prep/9-17.png" />  
   
-   > memo  
+18. 左側のブレードの**概要**から**再起動**をクリックし再び**状態**が**実行中**となるまで待つ    
+    <img src="images/prep/9-18.png" />  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
+19. 左側のブレードの**概要**から**接続**をクリックし **Bastion** を選択  
+    <img src="images/prep/9-19.png" />  
   
-     > memo  
+20. 仮想マシン作成時に設定した**ユーザー名**と**パスワード**を入力し**接続**をクリック  
+    <img src="images/prep/9-20.png" />  
   
-7. action  
-   <img src="images/prep/xxx.png" />  
+21. Azure Bastion 経由で仮想マシンにログインできたことを確認  
+    <img src="images/prep/9-21.png" />  
   
-   > memo  
+22. ログインした仮想マシンから Azure AD Domain Services で構成したドメインに参加  
+    <img src="images/prep/9-22-1.png" />  
+    > ドメイン参加時にユーザー、パスワード情報に関するエラーが発生する場合があります。  
+    その場合、Azure AD のユーザー管理画面からパスワードリセットを行ってください。  
+   <img src="images/prep/9-22-2.png" />  
+    その上で新たに発行された一時パスワードを用いて [Office365](https://www.office.com/?omkt=ja-jp) にログインしてパスワード変更を行ってください。  
+   <img src="images/prep/9-22-3.png" />  
+   <img src="images/prep/9-22-4.png" />  
   
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
+23. ドメインに正常に参加できたことを確認しサーバの再起動を実行  
+    <img src="images/prep/9-23.png" />  
   
-     > memo  
+24. 改めてサーバーにログインしドメインに参加出来ていることを確認  
+    <img src="images/prep/9-24.png" />  
   
-8. action  
-   <img src="images/prep/xxx.png" />  
-  
-   > memo  
-  
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
-  
-     > memo  
-  
-9. action  
-   <img src="images/prep/xxx.png" />  
-  
-   > memo  
-  
-   - list  
-   - list  
-   <img src="images/prep/xxx.png" />  
-  
-     > memo  
-  
-10. action  
-    <img src="images/prep/xxx.png" />  
-   
-    > memo  
-  
-    - list  
-    - list  
-    <img src="images/prep/xxx.png" />  
-  
-      > memo  
-  
+25. **9-17** 以降のステップを SQL Server, Windows 10 それぞれでも実行  
+    
   
