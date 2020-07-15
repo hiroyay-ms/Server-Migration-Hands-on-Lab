@@ -134,7 +134,7 @@
               "properties": {
                   "protocol": "Tcp",
                   "sourcePortRange": "*",
-                  "destinationPortRange": "20-21",
+                  "destinationPortRange": "20-21, 989, 10001-10300",
                   "sourceAddressPrefix": "*",
                   "destinationAddressPrefix": "Internet",
                   "access": "Allow",
@@ -225,7 +225,7 @@
         "properties": {
           "protocol": "Tcp",
           "sourcePortRange": "*",
-          "destinationPortRange": "20-21",
+          "destinationPortRange": "20-21, 989, 10001-10300",
           "sourceAddressPrefix": "*",
           "destinationAddressPrefix": "Internet",
           "access": "Allow",
