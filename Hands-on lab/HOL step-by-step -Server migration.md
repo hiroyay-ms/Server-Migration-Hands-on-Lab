@@ -14,7 +14,6 @@ July 2020
 - [Exercise 5: ストレージへの PDF ファイルのアップロード](#exercise-5-ストレージへの-pdf-ファイルのアップロード)
 - [Exercise 6: Azure PaaS サービスへのプライベート接続の実装](#exercise-6-Azure-PaaS-サービスへのプライベート接続の実装)
 - [Exercise 7: Web アプリケーションの監視設定](#exercise-7-web-アプリケーションの監視設定)
-- [Exercise 8: Web アプリケーションへの認証追加と外部公開](#exercise-8-web-アプリケーションへの認証追加と外部公開)
 
 # **Server migration hands-on lab**
 
@@ -24,7 +23,7 @@ July 2020
 
 ## **概要**
 Contoso, Ltd. (Contoso) は古くから存在する業界に新規参入した企業です。ニュージーランドのオークランドで 2011 年に設立された Contoso は、十分な保険に入っていない個人を対象としたニッチな市場で広範な長期保険サービスを提供しています。当初の予想よりも早いペースで成長を続けた Contoso では、その成長のスピードに対応することが困難になりつつありました。創業直後の 1 年間だけでも、同社のサービスに対する需要に応えるために 100 人以上の従業員を新規に雇用しました。Contoso は、保険契約と関連ドキュメントを管理するためにカスタム開発された PolicyConnect という ASP.NET で開発された Web アプリケーションを使用しています。PolicyConnect はオンプレミスの SQL Server 2008 R2 データベースをデータストアとして使用し、契約ドキュメントの格納には LAN 上のファイル サーバーが使用されています。契約の管理を目的としたこのアプリケーションとプロセスに対する負荷は限界に近づいています。  
-Contoso のアプリケーションをクラウドでホストするための準備の一環として、同社では、既存の SQL Server データベースを Azure 内の PaaS サービスに移行することが計画されています。Contoso は、Azure の完全なマネージド SQL サービスで提供される高度なセキュリティ機能を活用したいと考えています。アプリケーションも運用負荷の軽減や柔軟なスケール等のメリットを享受するため Azure PaaS サービスへの移行を検討していますが、当初はプライベート接続に限定したいと考えています。最終的にアプリケーションは、外部からアクセス可能な状態にする予定ですが、その際に既存の Active Directory のユーザーでアクセスできる必要があります。  
+Contoso のアプリケーションをクラウドでホストするための準備の一環として、同社では、既存の SQL Server データベースを Azure 内の PaaS サービスに移行することが計画されています。Contoso は、Azure の完全なマネージド SQL サービスで提供される高度なセキュリティ機能を活用したいと考えています。アプリケーションも運用負荷の軽減や柔軟なスケール等のメリットを享受するため Azure PaaS サービスへの移行を検討していますが、プライベート接続に限定したいと考えています。  
 クラウドへの移行により、社内の技術的能力が向上し、クラウドの強化機能やサービスを活用できるようになることが期待されています。
 
 ## **ソリューション アーキテクチャ**
@@ -326,29 +325,3 @@ k6 run --vus 500 --duration 360s script.js
 - **k6 の基本的な使用方法**  
 <https://k6.io/docs/getting-started/running-k6>
 
-<br />
-
-# **Exercise 8: Web アプリケーションの外部公開**
-
-## **Task 1**: 
-## **Task 2**: 
-
-### **参考情報**
-- **Application Gateway とは**  
-<https://docs.microsoft.com/ja-jp/azure/application-gateway/overview>
-- **自動スケーリングとゾーン冗長 Application Gateway v2**  
-<https://docs.microsoft.com/ja-jp/azure/application-gateway/application-gateway-autoscaling-zone-redundant>
-- **Application Gateway による Web トラフィックのルーティング**  
-<https://docs.microsoft.com/ja-jp/azure/application-gateway/quick-create-portal>
-- **Application Gateway 上の Web Application Firewall**  
-<https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/ag-overview>
-- **Web Application Firewall のある Application Gateway を作成する**  
-<https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/application-gateway-web-application-firewall-portal>
-- **VPN ゲートウェイとは**  
-<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-about-vpngateways>
-- **ポイント対サイト VPN Gateway 用に OpenVPN を構成する**  
-<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-howto-openvpn>
-- **VPN Gateway 用に OpenVPN クライアントを構成する**  
-<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients>
-- **P2S OpenVPN プロトコル用に VPN クライアントを構成する**  
-<https://docs.microsoft.com/ja-jp/azure/vpn-gateway/openvpn-azure-ad-client>
