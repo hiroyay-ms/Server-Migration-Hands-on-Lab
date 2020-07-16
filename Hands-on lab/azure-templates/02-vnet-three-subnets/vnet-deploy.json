@@ -67,6 +67,8 @@
       "allowHTTPInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Allow-HTTP-Internet-Outbound')]",
       "allowHTTPSInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Allow-HTTPS-Internet-Outbound')]",
       "allowFTPInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Allow-FTP-Internet-Outbound')]",
+      "allowFTPSInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Allow-FTPS-Internet-Outbound')]",
+      "allowFTPDataInternetOutbound": "[concat(variables('networkSecurityGroupName'), '/Allow-FTP-Data-Internet-Outbound')]",
 
       "bastionIPAddress": "[concat(parameters('bastionHostName'), '-NIC')]"
   },
@@ -134,11 +136,45 @@
               "properties": {
                   "protocol": "Tcp",
                   "sourcePortRange": "*",
-                  "destinationPortRange": "20-21, 989, 10001-10300",
+                  "destinationPortRange": "20-21",
                   "sourceAddressPrefix": "*",
                   "destinationAddressPrefix": "Internet",
                   "access": "Allow",
                   "priority": 120,
+                  "direction": "Outbound",
+                  "sourcePortRanges": [],
+                  "destinationPortRanges": [],
+                  "sourceAddressPrefixes": [],
+                  "destinationAddressPrefixes": []
+              }
+            },
+            {
+              "name": "Allow-FTPS-Internet-Outbound",
+              "properties": {
+                  "protocol": "Tcp",
+                  "sourcePortRange": "*",
+                  "destinationPortRange": "989",
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "Internet",
+                  "access": "Allow",
+                  "priority": 130,
+                  "direction": "Outbound",
+                  "sourcePortRanges": [],
+                  "destinationPortRanges": [],
+                  "sourceAddressPrefixes": [],
+                  "destinationAddressPrefixes": []
+              }
+            },
+            {
+              "name": "Allow-FTP-Data-Internet-Outbound",
+              "properties": {
+                  "protocol": "Tcp",
+                  "sourcePortRange": "*",
+                  "destinationPortRange": "10001-10300",
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "Internet",
+                  "access": "Allow",
+                  "priority": 140,
                   "direction": "Outbound",
                   "sourcePortRanges": [],
                   "destinationPortRanges": [],
@@ -225,11 +261,55 @@
         "properties": {
           "protocol": "Tcp",
           "sourcePortRange": "*",
-          "destinationPortRange": "20-21, 989, 10001-10300",
+          "destinationPortRange": "20-21",
           "sourceAddressPrefix": "*",
           "destinationAddressPrefix": "Internet",
           "access": "Allow",
           "priority": 120,
+          "direction": "Outbound",
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+        "apiVersion": "2020-04-01",
+        "name": "[variables('allowFTPSInternetOutbound')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+        ],
+        "properties": {
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "destinationPortRange": "989",
+          "sourceAddressPrefix": "*",
+          "destinationAddressPrefix": "Internet",
+          "access": "Allow",
+          "priority": 130,
+          "direction": "Outbound",
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+        "apiVersion": "2020-04-01",
+        "name": "[variables('allowFTPDataInternetOutbound')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+        ],
+        "properties": {
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "destinationPortRange": "10001-10300",
+          "sourceAddressPrefix": "*",
+          "destinationAddressPrefix": "Internet",
+          "access": "Allow",
+          "priority": 140,
           "direction": "Outbound",
           "sourcePortRanges": [],
           "destinationPortRanges": [],
