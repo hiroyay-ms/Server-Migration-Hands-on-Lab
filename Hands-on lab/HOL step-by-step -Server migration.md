@@ -259,16 +259,18 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 <https://docs.microsoft.com/ja-jp/azure/dns/private-dns-overview>
 - **Azure プライベート エンドポイントを使用して非公開で Web Apps に接続する**  
 <https://docs.microsoft.com/ja-jp/azure/private-link/create-private-endpoint-webapp-portal>
+- **アプリを Azure 仮想ネットワークと統合する**  
+<https://docs.microsoft.com/ja-jp/azure/app-service/web-sites-integrate-with-vnet>
 - **AzureSQL Database と Azure Synapse Analytics の Private Link への対応**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/private-endpoint-overview>
-- **Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する**  
-<https://docs.microsoft.com/ja-jp/azure/private-link/create-private-endpoint-storage-portal>
-- **Key Vault を Azure Private Link と統合する**  
-<https://docs.microsoft.com/ja-jp/azure/key-vault/general/private-link-service>
 - **仮想ネットワーク ピアリング**  
 <https://docs.microsoft.com/ja-jp/azure/virtual-network/virtual-network-peering-overview>
 - **仮想ネットワーク ピアリングで仮想ネットワークを接続する**  
 <https://docs.microsoft.com/ja-jp/azure/virtual-network/tutorial-connect-virtual-networks-portal>
+- **Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する**  
+<https://docs.microsoft.com/ja-jp/azure/private-link/create-private-endpoint-storage-portal>
+- **Key Vault を Azure Private Link と統合する**  
+<https://docs.microsoft.com/ja-jp/azure/key-vault/general/private-link-service>
 
 <br />
 
