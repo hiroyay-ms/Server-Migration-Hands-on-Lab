@@ -31,10 +31,18 @@ Contoso のアプリケーションをクラウドでホストするための準
 <img src="images/Solution-Architecture.png" />
 
 ## **事前準備**
-- **Web アプリケーションの確認**
-- **データベースの確認**
-- **クライアントの確認**
-- **リソース グループの作成**
+- **移行対象 Web アプリケーションの動作確認**  
+  開発マシンから http://web-svr/Contoso/ へアクセスし、**Manage Policy Holders** をクリック  
+  <img src="images/ASPNET-Web-App-01.png" />  
+  **Details** をクリック  
+  <img src="images/ASPNET-Web-App-02.png" />  
+  File Path に表示されている PDF ファイル名をクリック  
+  <img src="images/ASPNET-Web-App-03.png" />  
+  PDF ファイルが開くことを確認  
+  <img src="images/ASPNET-Web-App-04.png" />
+- **<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>へのアクセス**  
+- **リソース グループの作成**  
+演習で使用するリソース グループを作成し、グループメンバーのアカウントにアクセス権限を付与
 <br />
 
 # **Exercise 1: オンプレミス データベースの移行**
