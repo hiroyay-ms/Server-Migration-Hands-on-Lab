@@ -332,6 +332,12 @@ k6 run --vus 500 --duration 360s script.js
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/learn/quick-monitor-portal>
 - **Live Metrics Stream**  
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/app/live-stream>
+- **Microsoft Azure のアラートの概要**  
+<https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/alerts-overview>
+- **Azure Portal でのアクション グループの作成および管理**  
+<https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/action-groups>
+- **Azure Monitor アラートによって複雑なアクションをトリガーする**  
+<https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/action-groups-logic-app>
 - **k6 の基本的な使用方法**  
 <https://k6.io/docs/getting-started/running-k6>
 
