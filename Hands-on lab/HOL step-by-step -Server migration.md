@@ -98,7 +98,7 @@ SQL の脆弱性評価サービスにより、セキュリティ状態の可視�
 
 ## **Task 3**: 動的データマスクの有効化
 Azure SQL Database で動的データマスク（DDM）を有効化し、クエリ結果からデータベース内の機密データへのアクセスを制限  
-動的データマスクの確認のためのクエリ
+動的データマスクの確認のためのサンプル クエリは以下の通り
 ```SQL
 -- データベース ユーザーの作成
 CREATE USER DDMUser WITHOUT LOGIN;
@@ -200,6 +200,8 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 <https://docs.microsoft.com/ja-jp/azure/active-directory/managed-identities-azure-resources/overview>
 - **App Service と Azure Functions でマネージド ID を使用する方法**  
 <https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet>
+- **App Service と Azure Functions の Key Vault 参照を使用する**  
+<https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references>
 - **マネージド ID で Key Vault の認証を提供する**  
 <https://docs.microsoft.com/ja-jp/azure/key-vault/general/managed-identity>
 - **Microsoft Azure の自動スケール**  
