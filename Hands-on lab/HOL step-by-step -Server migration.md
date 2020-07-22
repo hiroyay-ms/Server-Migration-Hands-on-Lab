@@ -128,7 +128,7 @@ REVERT;
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/sql-vulnerability-assessment>
 - **動的データマスク**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/dynamic-data-masking-overview>
-- **データベース ユーザーの作成**
+- **データベース ユーザーの作成**  
 <https://docs.microsoft.com/ja-jp/sql/relational-databases/security/authentication-access/create-a-database-user?view=sql-server-ver15>
 
 <br />
