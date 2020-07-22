@@ -124,7 +124,7 @@ REVERT;
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/advanced-data-security>
 - **SQL データの検出と分類**  
 <https://docs.microsoft.com/ja-jp/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-2017&tabs=t-sql>
-- **SQL 脆弱性評価**
+- **SQL 脆弱性評価**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/sql-vulnerability-assessment>
 - **動的データマスク**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/dynamic-data-masking-overview>
