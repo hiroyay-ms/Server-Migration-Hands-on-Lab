@@ -177,7 +177,7 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 
 ## **Task 1**: Key Vault の構成
 Key Vault に格納されたシークレットへのアクセスできるよう Web Apps へマネージド ID を設定  
-Key Vault を作成し、データベースへの接続文字列をキー コンテナにシークレットとして追加  
+Key Vault を作成し、データベースへの接続文字列を Key Vault にシークレットとして追加  
 アクセス許可を付与するアクセス ポリシーを生成
 ## **Task 2**: アプリケーション設定の構成
 データベースの接続文字列を Key Vault シークレットの URI を参照するように指定
