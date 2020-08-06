@@ -39,8 +39,14 @@ Contoso のアプリケーションをクラウドでホストするための準
   File Path に表示されている PDF ファイル名をクリック  
   <img src="images/ASPNET-Web-App-03.png" />  
   PDF ファイルが開くことを確認  
-  <img src="images/ASPNET-Web-App-04.png" />
-- **<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>へのアクセス**  
+  <img src="images/ASPNET-Web-App-04.png" />  
+
+- **ネットワーク セキュリティ グループの確認**
+  <img src="images/Network-Security-Group.png" />  
+  ※ Inetrnet への接続に制限がかけられていることを確認
+
+- **<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>へのアクセス**
+
 - **リソース グループの作成**  
 演習で使用するリソース グループを作成し、グループメンバーのアカウントにアクセス権限を付与
 <br />
