@@ -313,7 +313,7 @@
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]",
-                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'),'/extensions/', 'SetupSqlVM')]"
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'),'/extensions/', 'SetupSqlVM')]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
@@ -434,7 +434,7 @@
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('devVirtualMachineName'))]",
-                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'),'/extensions/', 'SetupDevVM')]"
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('devVirtualMachineName'),'/extensions/', 'SetupDevVM')]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
