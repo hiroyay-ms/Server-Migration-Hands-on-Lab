@@ -216,7 +216,7 @@
                 {
                     "type": "extensions",
                     "apiVersion": "2015-06-15",
-                    "name": "JoinDomain",
+                    "name": "JoinDomainWebVM",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]",
@@ -309,7 +309,7 @@
                 {
                     "type": "extensions",
                     "apiVersion": "2015-06-15",
-                    "name": "JoinDomain",
+                    "name": "JoinDomainSqlVM",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]",
@@ -430,7 +430,7 @@
                 {
                     "type": "extensions",
                     "apiVersion": "2015-06-15",
-                    "name": "JoinDomain",
+                    "name": "JoinDomainDevVM",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('devVirtualMachineName'))]",
