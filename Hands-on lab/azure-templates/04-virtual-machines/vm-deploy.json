@@ -335,7 +335,7 @@
         {
             "type": "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
             "apiVersion": "2017-03-01-preview",
-            "name": "SQLserver-Settings",
+            "name": "[variables('sqlVirtualMachineName')]",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
