@@ -103,6 +103,7 @@
                 ]
             }
         },
+
         {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2019-07-01",
@@ -123,6 +124,7 @@
                 ]
             }
         },
+
         {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2019-07-01",
@@ -143,6 +145,7 @@
                 ]
             }
         },
+
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2019-03-01",
@@ -217,7 +220,7 @@
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]",
-                        "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'SetupWebVM')]"
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'),'/extensions/', 'SetupWebVM')]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
@@ -310,7 +313,7 @@
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]",
-                        "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'SetupSQLVM')]"                        
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'),'/extensions/', 'SetupSqlVM')]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
@@ -431,7 +434,7 @@
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('devVirtualMachineName'))]",
-                        "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'SetupDevVM')]"                        
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'),'/extensions/', 'SetupDevVM')]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
