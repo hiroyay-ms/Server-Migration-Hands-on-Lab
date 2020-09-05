@@ -338,9 +338,7 @@
             "name": "SQLserver-Settings",
             "location": "[variables('location')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions/', 'SetupSqlVM')]",
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions/', 'JoinDomainSqlVM')]"
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
             ],
             "properties": {
                 "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
