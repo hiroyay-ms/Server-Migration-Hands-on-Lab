@@ -14,7 +14,7 @@ July 2020
   - Task 3: 仮想ネットワークの作成  
   - Task 4: Azure Active Directory Domain Services の作成  
   - Task 5: Azure Bastion の展開  
-  - Task 6: Windows Server 2012 R2 仮想マシンの作成  
+  - Task 6: Windows Server 仮想マシンの作成  
   - Task 7: SQL Server 2012 仮想マシンの作成  
   - Task 8: Windows 10 仮想マシンの作成  
   - Task 9: 仮想マシンのドメイン参加  
@@ -103,7 +103,7 @@ July 2020
 13. カスタム グループへ追加したユーザーで [Azure ポータル](https://portal.azure.com/)を開き今回作成したリソースグループへアクセス出来ることを確認
   
   
-### **Task 3: 仮想ネットワークの作成  **  
+### **Task 3: 仮想ネットワークの作成**  
   
 1. ホーム画面から**リソースの作成**をクリック  
    <img src="images/prep/3-1.png" />  
@@ -140,7 +140,8 @@ July 2020
    <img src="images/prep/3-7.png" />  
   
   
-### **Task 4: Azure Active Directory Domain Services の作成  **  
+### **Task 4: Azure Active Directory Domain Services の作成**  
+Windows Server 仮想マシンで Domain Controller を用意する場合はこのタスクはスキップしてください
   
 1. ホーム画面から**リソースの作成**をクリック  
    <img src="images/prep/4-1.png" />  
@@ -176,7 +177,7 @@ July 2020
    <img src="images/prep/4-7-2.png" />    
   
   
-### **Task 5: Azure Bastion の展開  **  
+### **Task 5: Azure Bastion の展開**  
   
 1. ホーム画面からリソースグループ一覧を表示   
    <img src="images/prep/5-1.png" />  
@@ -232,7 +233,11 @@ July 2020
    <img src="images/prep/5-12.png" />  
   
   
-### **Task 6: Windows Server 2012 R2 仮想マシンの作成 **  
+### **Task 6: Windows Server 仮想マシンの作成**  
+ここでは 1 台 or 2 台の Windows Server を作成します。  
+  - **必須**: Web-SVR ( Windows Server 2012 R2 )  
+  - **オプション**: DC-SVR ( Windows Server 2019 )  
+      - Task 4 で Azure AD Domain Services を作成していない場合は、ここで DC サーバーを作成してください  
   
 1. ホーム画面からリソースグループ一覧を表示   
    <img src="images/prep/6-1.png" />  
@@ -270,6 +275,7 @@ July 2020
   
 11. **ソフトウェア プランの選択**で **Windows Server 2012 R2 Datacenter** を選択し**作成**をクリック  
     <img src="images/prep/6-11.png" />  
+    > Domain Contoroler 作成時は Windows Server 2019 を選択してください
   
 12. **基本**タブで次の構成を設定し**ディスク**をクリック  
     - プロジェクトの詳細  
@@ -351,11 +357,12 @@ July 2020
 22. 言語パックのインストール完了後改めて Azure Bastion 経由で仮想マシンにログインし日本語化されたことを確認  
    <img src="images/prep/6-24.png" />  
   
+Domain Contoroler を作成する必要がある場合は続けて作成してください  
   
-### **Task 7: SQL Server 2012 仮想マシンの作成 **  
+### **Task 7: SQL Server 2012 仮想マシンの作成**  
   
   
-### **Task 8: Windows 10 仮想マシンの作成 **  
+### **Task 8: Windows 10 仮想マシンの作成**  
   
 1. ホーム画面から**リソースの作成**をクリック  
     <img src="images/prep/8-1.png" />  
