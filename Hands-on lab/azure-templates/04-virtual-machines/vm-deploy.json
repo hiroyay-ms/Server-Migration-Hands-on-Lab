@@ -339,8 +339,8 @@
             "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
-                "[resourceId('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'),'/extensions/', 'SetupSqlVM')]",
-                "[resourceId('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'),'/extensions/', 'JoinDomainSqlVM')]"
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions/', 'SetupSqlVM')]",
+                "[resourceId('Microsoft.Compute/virtualMachines/extensions/', 'JoinDomainSqlVM')]"
             ],
             "properties": {
                 "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
