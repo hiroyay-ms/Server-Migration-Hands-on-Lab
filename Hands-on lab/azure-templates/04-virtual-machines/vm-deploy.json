@@ -190,7 +190,7 @@
             },
             "resources": [
                 {
-                    "type": "extensions",
+                    "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2019-03-01",
                     "name": "SetupWebVM",
                     "location": "[variables('location')]",
@@ -211,13 +211,13 @@
                     }
                 },
                 {
-                    "type": "extensions",
+                    "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2015-06-15",
                     "name": "JoinDomain",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]",
-                        "[resourceId('extensions', 'SetupWebVM')]"
+                        "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'SetupWebVM')]"
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
@@ -283,7 +283,7 @@
             },
             "resources": [
                 {
-                    "type": "extensions",
+                    "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2019-03-01",
                     "name": "SetupSqlVM",
                     "location": "[variables('location')]",
@@ -304,13 +304,13 @@
                     }
                 },
                 {
-                    "type": "extensions",
+                    "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2015-06-15",
                     "name": "JoinDomain",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]",
-                        "[resourceId('extensions', 'SetupSqlVM')]"                        
+                        "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'SetupSQLVM')]"                        
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
@@ -404,7 +404,7 @@
             },
             "resources": [
                 {
-                    "type": "extensions",
+                    "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2019-03-01",
                     "name": "SetupDevVM",
                     "location": "[variables('location')]",
@@ -425,13 +425,13 @@
                     }
                 },
                 {
-                    "type": "extensions",
+                    "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2015-06-15",
                     "name": "JoinDomain",
                     "location": "[variables('location')]",
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('devVirtualMachineName'))]",
-                        "[resourceId('extensions', 'SetupDevVM')]"                        
+                        "[resourceId('Microsoft.Compute/virtualMachines/extensions', 'SetupDevVM')]"                        
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
