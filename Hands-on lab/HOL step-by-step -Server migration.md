@@ -60,10 +60,7 @@ Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデー
 ## **Task 2**: Azure SQL Database へのデータ移行  
 オンプレミス データベースから Azure SQL Database へ移行  
 移行方法は複数想定されるため、いずれかの方法を選択  
-  
-Exercise 1 完了時のイメージ構成  
-<img src="images/Exercise1.png" width=50%/>  
-  
+
 <br />
 
 ## **criteria**
@@ -71,7 +68,10 @@ Exercise 1 完了時のイメージ構成
 - クエリ エディターを使用し 取得したテーブル内のレコード件数が SQL Server のレコード件数と同数である
 
 <br />
-
+  
+Exercise 1 完了時のイメージ構成  
+<img src="images/Exercise1.png" width=45%/>  
+  
 ### **参考情報**
 - **SQL Server データベースを Azure に移行する**  
 <https://docs.microsoft.com/ja-jp/dotnet/azure/migration/sql>
@@ -119,10 +119,7 @@ EXECUTE AS USER = 'DDMUser';
 SELECT * FROM [dbo].[テーブル名];
 REVERT;
 ```
-  
-Exercise 2 完了時のイメージ構成  
-<img src="images/Exercise2.png" width=50%/>  
-  
+
 <br />
 
 ## **criteria**
@@ -130,7 +127,10 @@ Exercise 2 完了時のイメージ構成
 - クエリ エディターから SELECT 句を実行し、マスキングされたデータを参照できる
 
 <br />
-
+  
+Exercise 2 完了時のイメージ構成  
+<img src="images/Exercise2.png" width=40%/>  
+  
 ### **参考情報**
 - **Advanced Data Security**  
 <https://docs.microsoft.com/ja-jp/azure/azure-sql/database/advanced-data-security>
@@ -153,12 +153,12 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 ## **Task 2**: Web Apps へのアプリケーションの移行
 移行先となる Web Apps の作成  
 アプリケーションの移行
+
+<br />
   
 Exercise 3 完了時のイメージ構成  
-<img src="images/Exercise3.png" width=50%/>  
+<img src="images/Exercise3.png" width=35%/>  
   
-<br />
-
 ### **criteria**
 - Web ブラウザーに Web Apps の URL を入力しアプリケーションの正しく表示できる
 
@@ -198,12 +198,12 @@ Key Vault を作成し、データベースへの接続文字列を Key Vault �
 データベースの接続文字列を Key Vault シークレットの URI を参照するように指定
 ## **Task 3**: 自動スケールの設定
 CPU 負荷が閾値を超えた場合にアプリケーションがスケール アウトするよう構成
+
+<br />
   
 Exercise 4 完了時のイメージ構成  
-<img src="images/Exercise4.png" width=50%/>  
+<img src="images/Exercise4.png" width=30%/>  
   
-<br />
-
 ## **criteria**
 - Key Vault サービスが正しく構成され、マネージド ID を使用してシークレット情報を取得できる
 - アプリケーションからデータベース内の情報を取得し表示できる
@@ -237,12 +237,12 @@ Exercise 4 完了時のイメージ構成
 ファイルを作成した Blob コンテナーにコピー
 ## **Task 3**: アプリケーション設定の変更
 アプリケーションからファイルが参照できるように構成ファイルのパスを変更
+
+<br />
   
 Exercise 5 完了時のイメージ構成  
-<img src="images/Exercise5.png" width=50%/>  
+<img src="images/Exercise5.png" width=25%/>  
   
-<br />
-
 ### **参考情報**
 - **Azure Storage アカウントの作成**  
 <https://docs.microsoft.com/ja-jp/azure/storage/common/storage-account-create?tabs=azure-portal>
@@ -268,12 +268,12 @@ Exercise 5 完了時のイメージ構成
 ## **Appendix**（時間があれば、以下の PaaS サービスのプライベート エンドポイントも構成）
   - Azure Storage
   - Key Vault
+
+<br />
   
 Exercise 6 完了時のイメージ構成  
-<img src="images/Exercise6.png" width=50%/>  
+<img src="images/Exercise6.png" width=20%/>  
   
-<br />
-
 ## **criteria**
 - インターネット経由ではアプリケーションの表示が不可、VNet 内の仮想マシンからのみ表示できる
 - SQL Server の SQL Server Management Studio から SQL Database へ接続できる
@@ -346,12 +346,12 @@ k6 run --vus 500 --duration 360s script.js
 ## **criteria**
 - 負荷テスト実行時に自動スケールにより Web Apps のインスタンス数が増加する
 - 自動スケールの開始を検知し管理者にメールが通知されることを確認する
+
+<br />
   
 Exercise 7 完了時のイメージ構成  
-<img src="images/Exercise7.png" width=50%/>  
+<img src="images/Exercise7.png" width=15%/>  
   
-<br />
-
 ### **参考情報**
 - **Application Insights とは何か**  
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/app/app-insights-overview>
