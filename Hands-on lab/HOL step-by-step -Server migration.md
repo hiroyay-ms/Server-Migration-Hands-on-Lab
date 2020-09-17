@@ -70,7 +70,7 @@ Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデー
 <br />
   
 Exercise 1 完了時のイメージ構成  
-<img src="images/Exercise1.png" width=45%/>  
+<img src="images/Exercise1.png" width=30%/>  
   
 ### **参考情報**
 - **SQL Server データベースを Azure に移行する**  
@@ -129,7 +129,7 @@ REVERT;
 <br />
   
 Exercise 2 完了時のイメージ構成  
-<img src="images/Exercise2.png" width=40%/>  
+<img src="images/Exercise2.png" width=30%/>  
   
 ### **参考情報**
 - **Advanced Data Security**  
@@ -157,7 +157,7 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 <br />
   
 Exercise 3 完了時のイメージ構成  
-<img src="images/Exercise3.png" width=35%/>  
+<img src="images/Exercise3.png" width=30%/>  
   
 ### **criteria**
 - Web ブラウザーに Web Apps の URL を入力しアプリケーションの正しく表示できる
@@ -241,7 +241,7 @@ Exercise 4 完了時のイメージ構成
 <br />
   
 Exercise 5 完了時のイメージ構成  
-<img src="images/Exercise5.png" width=25%/>  
+<img src="images/Exercise5.png" width=30%/>  
   
 ### **参考情報**
 - **Azure Storage アカウントの作成**  
@@ -272,7 +272,7 @@ Exercise 5 完了時のイメージ構成
 <br />
   
 Exercise 6 完了時のイメージ構成  
-<img src="images/Exercise6.png" width=20%/>  
+<img src="images/Exercise6.png" width=30%/>  
   
 ## **criteria**
 - インターネット経由ではアプリケーションの表示が不可、VNet 内の仮想マシンからのみ表示できる
@@ -350,7 +350,7 @@ k6 run --vus 500 --duration 360s script.js
 <br />
   
 Exercise 7 完了時のイメージ構成  
-<img src="images/Exercise7.png" width=15%/>  
+<img src="images/Exercise7.png" width=30%/>  
   
 ### **参考情報**
 - **Application Insights とは何か**  
