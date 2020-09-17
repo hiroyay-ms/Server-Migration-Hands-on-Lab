@@ -370,3 +370,4 @@ Exercise 7 完了時のイメージ構成
 - **k6 の基本的な使用方法**  
 <https://k6.io/docs/getting-started/running-k6>
 
+
