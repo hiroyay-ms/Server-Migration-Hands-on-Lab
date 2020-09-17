@@ -59,8 +59,11 @@ Azure SQL Database にデータを移行する際に対処する必要のある�
 Microsoft Data Migration Assistant (DMA) を使用して、移行対象のデータベースの評価を実行
 ## **Task 2**: Azure SQL Database へのデータ移行  
 オンプレミス データベースから Azure SQL Database へ移行  
-移行方法は複数想定されるため、いずれかの方法を選択
-
+移行方法は複数想定されるため、いずれかの方法を選択  
+  
+Exercise 1 完了時のイメージ構成  
+<img src="images/Exercise1.png" width=50%/>  
+  
 <br />
 
 ## **criteria**
@@ -116,7 +119,10 @@ EXECUTE AS USER = 'DDMUser';
 SELECT * FROM [dbo].[テーブル名];
 REVERT;
 ```
-
+  
+Exercise 2 完了時のイメージ構成  
+<img src="images/Exercise2.png" width=50%/>  
+  
 <br />
 
 ## **criteria**
@@ -147,7 +153,10 @@ App Service Migration Assistant ツールを使用して、事前状況チェッ
 ## **Task 2**: Web Apps へのアプリケーションの移行
 移行先となる Web Apps の作成  
 アプリケーションの移行
-
+  
+Exercise 3 完了時のイメージ構成  
+<img src="images/Exercise3.png" width=50%/>  
+  
 <br />
 
 ### **criteria**
@@ -189,7 +198,10 @@ Key Vault を作成し、データベースへの接続文字列を Key Vault �
 データベースの接続文字列を Key Vault シークレットの URI を参照するように指定
 ## **Task 3**: 自動スケールの設定
 CPU 負荷が閾値を超えた場合にアプリケーションがスケール アウトするよう構成
-
+  
+Exercise 4 完了時のイメージ構成  
+<img src="images/Exercise4.png" width=50%/>  
+  
 <br />
 
 ## **criteria**
@@ -225,7 +237,10 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 ファイルを作成した Blob コンテナーにコピー
 ## **Task 3**: アプリケーション設定の変更
 アプリケーションからファイルが参照できるように構成ファイルのパスを変更
-
+  
+Exercise 5 完了時のイメージ構成  
+<img src="images/Exercise5.png" width=50%/>  
+  
 <br />
 
 ### **参考情報**
@@ -253,7 +268,10 @@ CPU 負荷が閾値を超えた場合にアプリケーションがスケール 
 ## **Appendix**（時間があれば、以下の PaaS サービスのプライベート エンドポイントも構成）
   - Azure Storage
   - Key Vault
-
+  
+Exercise 6 完了時のイメージ構成  
+<img src="images/Exercise6.png" width=50%/>  
+  
 <br />
 
 ## **criteria**
@@ -328,7 +346,10 @@ k6 run --vus 500 --duration 360s script.js
 ## **criteria**
 - 負荷テスト実行時に自動スケールにより Web Apps のインスタンス数が増加する
 - 自動スケールの開始を検知し管理者にメールが通知されることを確認する
-
+  
+Exercise 7 完了時のイメージ構成  
+<img src="images/Exercise7.png" width=50%/>  
+  
 <br />
 
 ### **参考情報**
@@ -348,4 +369,5 @@ k6 run --vus 500 --duration 360s script.js
 <https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/action-groups-logic-app>
 - **k6 の基本的な使用方法**  
 <https://k6.io/docs/getting-started/running-k6>
+
 
