@@ -221,6 +221,7 @@
                     "dependsOn": [
                         "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'))]",
                         "[concat('Microsoft.Compute/virtualMachines/', variables('webVirtualMachineName'),'/extensions/', 'SetupWebVM')]"
+                        
                     ],
                     "properties": {
                         "publisher": "Microsoft.Compute",
